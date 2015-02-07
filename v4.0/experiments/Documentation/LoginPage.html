@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Car Point</title>
+    <link rel="stylesheet" href="documentation.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="shortcut icon" href="images/documentation.png">
+    <script>
+
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                if (!$(this).hasClass("active")) {
+                    var tabNum = $(this).index();
+                    var nthChild = tabNum + 1;
+                    $("ul#tabs li.active").removeClass("active");
+                    $(this).addClass("active");
+                    $("ul#tab li.active").removeClass("active");
+                    $("ul#tab li:nth-child(" + nthChild + ")").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../FinalProject/images/CarPoint.png" />
+
+        </div>
+        <div id="body">
+            <br /><br />
+            <b> Login Page Explanation : </b> <br />
+            <strong>Please contact me for login page access at vankireddy.s@husky.neu.edu</strong>
+            <p>
+                In this website we have login page . User will be able to login and will see his own dashboard.Also user will have permission 
+                only when he is login to redirect to forum, Where all the  users can discuss about cars .<br />
+            
+
+            <br />
+            <p>
+                <b> Base Technologies used:</b> <br />
+
+                1) ASPX <br />
+                2) HTML,CSS <br /><br />
+
+                <b> Responsive:</b> <br />
+                Fully Responsive , no Bootstrap Used.
+                <br />
+                <br />
+                <b>  Table:(SQL) </b> <br />
+                <a href="#">Login</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.UserWallPosts">User wall posts</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FollowInfo">Follow Info</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.Posts">Posts</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.Comments">Comments</a><br />
+            </p>
+
+            <br />
+            <br /><b>Class Diagram :</b> <br />
+            <img src="images/WallInfoClassDiagram.png" />
+
+            <ul id="tabs">
+                <li class="active">Login</li>
+                <li>DashBoard views for the user</li>
+                <li>Dashboard Page</li>
+                <li>Profile View Page</li>
+                <li>Change Password</li>
+                <li> Edit Your Info Page</li>
+                <li> Recent Activity Page</li>
+                <li> Wall Post Page:</li>
+                <li> Forum Page:</li>
+            </ul>
+            <ul id="tab">
+                <li class="active">
+                    <br /><b>Class Diagram :</b> <br />
+                    <img src="images/logindiagram.png" />
+                    <p>
+
+                        <b> Access to this page:</b> <br />
+
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">  <img src="images/loginButton.png" /> <br /> </a>
+                    </p>
+                    <br />
+                    <img src="images/login.png" /> <br />
+                    <p>In Login page only authorized users are allowed login , unauthorized user will not be allowed to login to the application. </p>
+                    <b>Error shown on the screen</b> <br />
+                    <img src="images/login2.png" /> <br />
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Login.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Login.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/Car.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/login.css" target="_blank"> Style Sheet of Login Page </a> <br />                 
+                </li>
+                <li>
+                      <b> Access to this page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+                    <b>Explanation</b>
+                    <p>Every user has the his/her own dashboard, below is the dashboard of the user who is logged in.</p>
+                    <br />
+
+                    <img src="images/dashboard.png" />
+                    <br />
+                    <b>When User visits their friends profile dashboard:</b><br /><br />
+                    <b>Explanation:</b>
+                    <p>When user navigates to othe profile he should not able to change password or edit profile information of the other user.
+                    So these options are hidden for user to access.</p>
+                    <br />
+                    <img src="images/dashboard2.png" />
+
+                    <p>
+                     We will be seeing in detail about the each dashboard option in the coming sections. (Source code is given in the coming sections)
+                    </p>
+
+                   
+                </li>
+                <li>
+
+                    <b>Explanation</b>
+                    <p> In my application dashboard contains of the list of followers and list of following user and a welcome message. <br />
+                        Followers and following is fetched from table FollowInfo. Profile view of the other user contains follow button
+                </p>
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to dashboard</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+
+                    
+                    <p>
+                        There are two types of Dash board views:<br />
+                        1)	Admin<br />
+                        2)	User<br />
+       
+                    </p>
+                    <img src="images/dashboard3.png" /> <br />
+                    <img src="images/dashboard4.png" /> <br />
+                  
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/DashBoard.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/DashBoard.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+                    
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> Explanation: profile view contains information of the user, this tab will be accessible to other user who navigate through profiles. <br />
+                        This page contains the FOLLOW and UNFOLLOW button. Where users can navigate through others profile, where they can follow them or unfollow them
+                    </p>
+
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to Profile View</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+                        <b>There are two typed of profile view:</b><br />
+                    <p>1) Logged in User Profile view.</p>
+                    <img src="images/profile.png"> <br />
+
+                    <p>
+                        2) Friends Profile view.
+                    </p>
+                    <img src="images/profile2.png"> <br />
+                    <p>    On Unfollow button click following message is displayed:</p><br />
+                    <img src="images/profile3.png"> <br />
+                    <p>On Follow button click following message is displayed:</p>
+                    <img src="images/profile4.png"> <br />
+                   
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/ProfileView.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/ProfileView.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+ </li>
+                <li>
+
+
+                    <b>Explanation</b>
+                    <p>
+                        Every user sometimes wants to change password for his login. 
+                        This tab is responsible to change the password of the user.
+                         Change password tab is only shown to the user who has logged in. 
+                        This button is not shown when user navigates to others profile.
+                    </p>
+                    
+                        <b> Access to this page:</b> <br />
+                        <p>Login to the page and click on Change password</p>
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+
+                    <b>
+                        User view:
+                    </b> <br />
+                    <img src="images/changepass.png"> <br />
+                    <p>
+                        Error messages are thrown when current password is not same as in database. <br />
+                        New password should be same as confirm password else error is shown.<br />
+                        If previous password matches with current password and new password is same as confirm password then the password is changed.
+
+                    </p>
+
+                   <br />
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/ChangePassword.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/ChangePassword.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+
+
+                </li>
+                <li>
+                    <b>Explanation:</b>
+                    <p>Every user sometimes wants to edit content in his profile. This tab is responsible to allow user to update his profile information. Edit your info button is only shown to the user who has logged in. This button is not shown when user navigates to others profile.</p>
+
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to Edit Your Info</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+                    <p>In this page user will not be able to edit his DOB. <br />
+                    Editable : First name, last name, email </p>
+                    <p>This page will update the information of the user. update operation is done on this page.</p>
+                    <img src="images/editProfile.png"> <br />
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/EditInfo.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/EditInfo.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation:</b>
+                    <p>Recent activity shows the recent 5 threads, comments, following people are shown on the screen. This tab will be available both logged in user and other users dashboard.</p>
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to Recent Activity.</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+
+                    <img src="images/recentActivity.png"> <br />
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/RecentActivity.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/RecentActivity.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+ 
+                </li>
+                <li>
+                    <b>Explanation :</b>
+                    <p>Wall post page allows other user to message on the walls of others and also check their own wall.</p>
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to Wall Posts.</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+                    <b>There are two typed of wall post:</b>
+                    <p>1)	Logged in user wall post: user cannot post on his own wall. So only post that others have done will be shown. 
+                    And by clicking in the name of the person who created the wall post, user will be able to navigate to posted users wall. </p>
+                    <img src="images/wallpost.png"> <br />
+
+                    <p>2)	Other users wall post : When logged in user navigates to other peoples wall, 
+                    logged in user will be able to post on their wall.</p>
+                    <img src="images/wallpost2.png"> <br />
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/WallPosts.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/WallPosts.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/WallInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+
+                </li>
+                <li>
+                    Explanation : 
+                    <p> Forum page is for all the user , where they can sell buy cars, discuss about cars and discuss offtopics </p>
+                    <b> Access to this page:</b> <br />
+                    <p>Login to the page and go to Forum.</p>
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">   <img src="images/loginButton.png" /> <br /> </a>
+
+                    <b>Forum button from dashboard :</b> <br />                    
+                    <img src="images/forum.png"> <br />
+
+                    <strong>I will explain more about the forum in the forum documentation , <a href="Forum.html"> CLICK HERE</a></strong>
+                </li>
+            </ul>
+        </div>
+
+
+        <center>
+            <div id="footer"> 2014 Copyright © Sneha Vankireddy</div>
+        </center>
+    </div>
+</body>
+</html>

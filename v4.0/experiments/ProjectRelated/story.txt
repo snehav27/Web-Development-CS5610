@@ -1,0 +1,9 @@
+﻿../../story/whatisnext.htm?../experiments/ProjectRelated/story.txt		       What is Next?
+RecursiveDropDownFromDB.aspx											Recursive drop down from DB.
+CarEquipmentDetails.aspx			                                    Car Equipment Details Using  AngularJS
+CarImages.aspx                                                          Car Images Using DB and AngularJS
+CarPrices.aspx                                                          Car Prices Using DB and Angular JS.
+CarRatings.aspx														    Car Rating Using DB and Angular JS.
+DealerInformation.html													Fetching Dealers information Angular JS.
+SocialNetworkSharing.html												Sharing website to Social neworking site.
+

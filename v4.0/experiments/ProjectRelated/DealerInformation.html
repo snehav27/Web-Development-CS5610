@@ -1,0 +1,362 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edmund API With Angular JS</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+     
+    </style>
+
+</head>
+<body id="centered" ng-app>
+   
+    <div class="container" ng-controller="CarInfoController3" class="main-wrapper">
+        <h1>Edmunds API using AngularJS </h1>
+        <p>
+            <b>Note : </b> Enter the zip code (based on USA region)
+        </p>
+        <div class="demo">
+            <input ng-model="zipcode" class="form-control" placeholder="Enter Zip Code" />
+           
+            <button ng-click="getDetails()">Get Dealer Details</button> </br>
+        </div>
+        </br> </br>
+
+        <table class="table" id="tab3" style="display:none">
+            <thead>
+                <tr>
+                    <th>Company name</th>              
+                    <th>Address</th>
+                    <th>Map Info</th>
+                    <th>Website</th>                    
+                    <th>Phone Number</th>
+                    <th>Open At</th>
+                    <th>Ratings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="d in dealer">                
+                    <td>{{d.name}}</td>
+                    <td >
+                        {{d.address.street}} ,
+                        {{d.address.apartment}} <br />
+                        {{d.address.city}} ,
+                        {{d.address.stateCode}} ,
+                        {{d.address.stateName}} <br /> 
+                        {{d.address.country}},                       
+                        {{d.address.zipcode}} ,                    
+                    </td>
+                    <td>
+                        <a href="http://maps.google.com/?q={{d.address.latitude}},{{d.address.longitude}}">Map Info</a>
+                    <td>
+                        <a href="{{d.contactinfo.dealer_website}}"> Dealer Website </a>
+                        
+                    </td>                   
+                    <td>
+                        {{d.contactinfo.phone}} 
+                    </td>
+                    <td>
+                     Wednesday  :   {{d.operations.Wednesday}} <br /> 
+                     Tuedsay    :   {{d.operations.Tuesday}} <br /> 
+                     Thursday   :   {{d.operations.Thursday}} <br /> 
+                     Saturday   :   {{d.operations.Saturday}} <br /> 
+                     Friday     :   {{d.operations.Friday}} <br /> 
+                     Moday      :   {{d.operations.Monday}} <br /> 
+                     Sunday     :   {{d.operations.Sunday}} <br /> 
+                    </td>
+                   <td> 
+                       <span >{{d.ratings.SALES_OVERALL_RATING}}</span>
+                </td>
+                    </tr>
+            </tbody>
+
+                     
+</table>
+        <p id="displayMessage"></p>
+        <h4>About the Experiment</h4>
+        <p>
+            This Experiment is continuation of Car Details Experiment :<br />
+            <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/api/CarDetailsAPI.html">Click Here For Car Details Experiment</a> and <br />
+          
+           I have used Edmunds API again to fetch the dealers information . After getting all necessary information about car
+            it is required to know dealers near by , their contact information and geographical place to further buy a car.
+            This experiement gives information of the near by dealers . 
+
+        </p>
+        <h4> URL Used</h4>
+        <pre>
+            URL = https://api.edmunds.com/v1/api/dealer?zipcode=zipcodeinput&fmt=json
+        </pre>
+        <p>
+            <b>Description : </b>
+            zipcodeinput string in the above URL will be replaced to get JSON responce.
+        </p>
+        <h4> Code snippet in the script</h4>
+        <pre><br/>
+                             
+        function CarInfoController3($scope, $http) {<br />
+            $http.headers = headers;<br />
+            $scope.getDetails = function () {<br />                
+                var zipcode = $scope.zipcode; <br />                
+                if (zipcode == "" ) {<br />
+                    alert("Please enter zip code to find near by Car dealers");<br />
+                    return false;<br />
+                }<br />
+                var url = URL.replace("zipcodeinput", zipcode);  <br />              
+
+                $http.get(url).success(function (response) {<br />
+                    var dealerDetails = response.dealerHolder;<br />
+                    $scope.dealer = dealerDetails;<br />
+
+                    if (dealerDetails[0] == null) {<br />
+                        document.getElementById("tab3").style.display = "none";<br />
+                        document.getElementById("displayMessage").innerHTML = <br />
+                            "No Data Available Retry with another Car.";<br />
+                    }<br />
+                    else {<br />
+                        document.getElementById("tab3").style.display = "";<br />
+                        document.getElementById("displayMessage").innerHTML = "";<br />
+                    }
+                });<br />
+            }
+        }
+     </pre>
+        <p>
+            <b>Description : </b><br/>
+            After URL sends the request to Edmund client , response is received and results is fetched in JSON format.
+            $scope.zipcode is fetched from user entered information and replaced in the URL. http.After the responce which is containing 
+            dealerHolder array of objects , containing the information will be fetched and added to $scope.dealer.
+            dealer will containing all the information . And information will be displayed only when there is atleast one array element 
+            in the dealerDetais.
+
+        </p>
+        <h4> Code snippet in the Div:</h4>
+        <pre>
+                           &lttbody&gt <br />
+                &lttr ng-repeat="d in dealer"&gt   <br />             
+                    &lttd&gt{ {d.name}}&lt/td&gt<br />
+                    &lttd &gt<br />
+                        { {d.address.street}} ,<br />
+                        { {d.address.apartment}} &ltbr /&gt<br />
+                        { {d.address.city}} ,<br />
+                        { {d.address.stateCode}} ,<br />
+                        { {d.address.stateName}} &ltbr /&gt <br />
+                        { {d.address.country}},         <br />              
+                        { {d.address.zipcode}} ,        <br />            
+                    &lt/td&gt<br />
+                    &lttd&gt<br />
+                        &lta 
+                href="http://maps.google.com/?q={ {d.address.latitude}},{ {d.address.longitude}}"&gtMap Info&lt/a&gt<br />
+                    &lttd&gt<br />
+                        &lta href="{ {d.contactinfo.dealer_website}}"&gt Dealer Website &lt/a&gt<br />
+                        
+                    &lt/td&gt      <br />             
+                    &lttd&gt<br />
+                        { {d.contactinfo.phone}} <br />
+                    &lt/td&gt<br />
+                    &lttd&gt<br />
+                     Wednesday  :   { {d.operations.Wednesday}} <br />
+                     Tuedsay    :   { {d.operations.Tuesday}} <br />
+                     Thursday   :   { {d.operations.Thursday}} <br />
+                     Saturday   :   { {d.operations.Saturday}} <br />
+                     Friday     :   { {d.operations.Friday}}  <br />
+                     Moday      :   { {d.operations.Monday}}  <br />
+                     Sunday     :   { {d.operations.Sunday}} <br />
+                    &lt/td&gt
+                   &lttd&gt 
+                       &ltspan &gt{ {d.ratings.SALES_OVERALL_RATING}}&lt/span&gt
+                &lt/td&gt
+                    &lt/tr&gt
+            &lt/tbody&gt
+                         
+       </pre>
+        <p>
+            <b>Description:</b>
+            In the above code snippet , I have iterated on dealer object to get the information of address, phone number 
+            website, geographical location of a particular user.
+            The new thing in this experiment is to get geographical location of the dealer . In the responce received 
+            we will get longitude and latitude coordinates of the dealer location , by appending these location to following URL:
+
+            <b>http://maps.google.com/?q={ {d.address.latitude}},{ {d.address.longitude}}</b>
+            we will able to show current location in the google maps.
+        </p>
+     <br />
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated/DealerInformation.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="http://developer.edmunds.com//" target="_blank">Edmunds Developer Site</a> <br />
+        <a href="https://developers.google.com/" target="_blank">Google Developer Site</a>
+        <hr />
+    </div>
+
+    <script>
+
+     
+        var URL3 = "https://api.edmunds.com/v1/api/dealer?zipcode=zipcodeinput&fmt=json&api_key=ea7qsju5c39uqr697b9vjg4x";
+        var headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+
+        function CarInfoController3($scope, $http) {
+            $http.headers = headers;
+            $scope.getDetails = function () {
+                console.log($scope.zipcode);
+               
+                var zipcode = $scope.zipcode;
+                
+                if (zipcode == "" ) {
+                    alert("Please enter zip code to find near by Car dealers");
+                    return false;
+                }
+                var url = URL3.replace("zipcodeinput", zipcode);                
+                console.log(url);
+                $http.get(url).success(function (response) {
+                    var dealerDetails = response.dealerHolder;
+                    $scope.dealer = dealerDetails;
+                    //alert(dealerDetails[0].address);
+                    if (dealerDetails[0] == null) {
+                        document.getElementById("tab3").style.display = "none";
+                        document.getElementById("displayMessage").innerHTML = "No Data Available Retry with another Car.";
+                    }
+                    else {
+                        document.getElementById("tab3").style.display = "";
+                        document.getElementById("displayMessage").innerHTML = "";
+                    }
+
+                });
+            }
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+﻿   html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center; /* !!! */
+        }
+
+        .centered {
+            margin: 0 auto;
+            text-align: left;
+            width: 800px;
+        }
+  
+       table {
+    text-align:center; 
+    margin-left:auto; 
+    margin-right:auto; 
+    width:100px;
+  }
+#DetailsGridView,#GridView2,#GridView3 {
+    
+    Width : 520px;
+    CellPadding : 4;
+}

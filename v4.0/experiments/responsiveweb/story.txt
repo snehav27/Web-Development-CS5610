@@ -1,0 +1,5 @@
+﻿../../story/whatisnext.htm?../experiments/responsiveweb/story.txt		       What is Next?
+ResponsiveImage.html			                                               Responsive Image
+ResponsiveNavigationContent.html                                               Responsive Navigation Bar
+AddLogoWithImage.html                                                          Responsive Image with text Content.
+ResponsiveTable.html														   Responsive Table.

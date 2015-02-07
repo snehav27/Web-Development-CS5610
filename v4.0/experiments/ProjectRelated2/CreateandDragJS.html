@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Create and drag</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+
+        img {
+            width: 350px;
+            height: 250px;
+        }
+    </style>
+  <script>
+
+      $(function () {
+          function init() {
+              $(".add-btn").click(addBtnHandler);
+           
+          }
+
+      
+          init();
+    
+        
+          function addBtnHandler() {
+              var elementType = $(".element-type").val();
+              console.log("Adding Element " + elementType);
+              addElementForType(elementType);
+          }
+
+          function addElementForType(elementType) {
+              var html = htmlTemplates[elementType];
+              var dom = $(html)
+                  .css({ position: "absolute", top: 200, left: 600, width: 200, height: 100 })
+                  .click(elementClickHandler);
+              $("body").append(dom);
+              return dom;
+          }
+
+          function elementClickHandler() {
+              var element = $(this);
+              unselectAllElements(element);
+              selectElement(element);
+          }
+
+          function unselectAllElements(element) {
+              if (element.hasClass("selected"))
+                  return;
+
+              $(".selected").find(".delete-btn").remove();
+              $(".selected").find(".edit-btn").remove();
+
+              $(".selected")
+                  .css("box-shadow", "0px 0px 0px #888888")
+                  .css("z-index", 0)
+                  .draggable("destroy")
+                  .resizable("destroy")
+                  .removeClass("selected");
+
+          }
+
+          function selectElement(element) {
+
+              if (element.hasClass("selected"))
+                  return;
+
+              var deleteBtnHtml = "<button class='delete-btn btn btn-danger'>X</button>";
+              var $deleteBtn = $(deleteBtnHtml).click(deleteBtnHandler);
+
+              var editBtnHtml = "<button class='edit-btn btn btn-warning'>...</button>";
+              var $editBtn = $(editBtnHtml).click(editBtnHandler);
+
+              element
+                  .addClass("selected")
+                  .css("box-shadow", "0px 0px 5px #888888")
+                  .css("z-index", 1)
+                  .draggable({ grid: [10, 10] })
+                  .resizable({ grid: [10, 10], handles: "n, e, s, w, ne, se, sw, nw" })
+                  .append($deleteBtn)
+                  .append($editBtn);
+          }
+
+          function deleteBtnHandler() {
+              var btn = $(this);
+              var parentElement = btn.parent();
+              parentElement.remove();
+          }
+
+          function editBtnHandler() {
+              var btn = $(this);
+              var parentElement = btn.parent();
+              console.log("Editing ");
+              console.log(parentElement);
+              if (parentElement.hasClass("img")) {
+                  var url = prompt("Provide Image URL");
+
+                  if (url != "" && url != null)
+                      parentElement.find("img").attr("src", url);
+              } else if (parentElement.hasClass("youTube")) {
+                  var url = prompt("Provide YouTube URL");
+
+                  if (url != "" && url != null) {
+                      var parts = url.split("/");
+                      var part = parts[parts.length - 1];
+                      var src = "//www.youtube.com/embed/" + part;
+                      parentElement.find("iframe").attr("src", src);
+                  }
+
+
+              }
+          }
+
+          var htmlTemplates = {
+              "H1": "<div class='ide h1'><h1 contenteditable='true' class='content'>Heading 1</h1></div>",
+              "DIV": "<div class='ide div'><div contenteditable='true' class='content'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div></div>",
+              "IMG": "<div class='ide img'><img class='content' width='100%' height='100%' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSrAWVie6gl6ld3ZtmEKQ40awRCCikA0UYzw-iaRXmDX9BlPaaDhQ'/></div>",
+              "YOU_TUBE": '<div class="ide youTube" style="padding:10px"><iframe class="content" width="100%" height="100%" src="//www.youtube.com/embed/NbbIAlI-Vvc" frameborder="0" allowfullscreen></iframe></div>'
+          };
+      });
+
+  </script>
+</head>
+<body id="centered" class="main-wrapper">
+
+    <center>
+        <h1>News Editorial Page :</h1> <br />
+        <p><b>Note :</b> Please enable cors . Still working on enabling cors through javascript</p>
+    </center>
+    <div class="demo">
+        <div class="toolbar">
+            <div class="centered-div form-inline">
+                <select class="form-control element-type">
+                    <option value="H1">Heading 1 (H1)</option>
+                    <option value="DIV">Section (DIV)</option>
+                    <option value="IMG">Image (IMG)</option>
+                    <option value="YOU_TUBE">YouTube (Frame)</option>
+                </select>
+                <button class="btn btn-success add-btn">Add</button>
+
+            </div>
+        </div>
+    </div>
+   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <h4>About the experiment :</h4>
+    This experiment is for News editorial page for admin in my final project. <br />
+    <p> In this experiment I have shown operations : </p>
+    <p>
+        1)Enable draggable functionality on any DOM element. Move the draggable object by clicking on it with the mouse and dragging it anywhere within the viewport.<br />
+        2)Edit The Dom element. <br />
+        3)Delete the created Dom Element.
+    </p>
+
+    <h4>Code : adding dom to body</h4>
+
+    <pre>
+
+           function addElementForType(elementType) {<br />
+              var html = htmlTemplates[elementType];<br />
+              var dom = $(html)<br />
+                  .css({ position: "absolute", top: 200, left: 600, width: 200, height: 100 })<br />
+                  .click(elementClickHandler);<br />
+              $("body").append(dom);<br />
+              return dom;<br />
+          }<br />
+          function elementClickHandler() {<br />
+              var element = $(this);<br />
+              unselectAllElements(element);<br />
+              selectElement(element);<br />
+          }<br />
+    </pre>
+    <p>
+        <b>Description :</b>
+        From above code the dom elements are added to the screen .  html templates will get the template of the 
+        particular dom element , i.e if h1 is selected , htmlTemplates[elementType] will get the format  and as per declared html template.
+        <br />
+        .css will where position of that particular element should be placed. <br />
+        .click will add the event handler i.e on click the element is selected or unselected according to user actions. <br />
+        body.append will apend the dom to the body to display on html.
+
+
+
+    </p>
+    <h4>Code : selecting and unselecting dom element handler</h4>
+    <pre>
+          function unselectAllElements(element) {<br />
+              if (element.hasClass("selected"))<br />
+                  return;<br />
+              $(".selected").find(".delete-btn").remove();<br />
+              $(".selected").find(".edit-btn").remove();<br />
+              $(".selected")<br />
+                  .css("box-shadow", "0px 0px 0px #888888")<br />
+                  .css("z-index", 0)<br />
+                  .draggable("destroy")<br />
+                  .resizable("destroy")<br />
+                  .removeClass("selected");<br />
+          }<br />
+          function selectElement(element) {<br />
+              if (element.hasClass("selected"))<br />
+                  return;<br />
+              var deleteBtnHtml = "<button>X</button>";<br />
+              var $deleteBtn = $(deleteBtnHtml).click(deleteBtnHandler);<br />
+              var editBtnHtml = "<button >...</button>";<br />
+              var $editBtn = $(editBtnHtml).click(editBtnHandler);<br />
+              element<br />
+                  .addClass("selected")<br />
+                  .css("box-shadow", "0px 0px 5px #888888")<br />
+                  .css("z-index", 1)<br />
+                  .draggable({ grid: [10, 10] })<br />
+                  .resizable({ grid: [10, 10], handles: "n, e, s, w, ne, se, sw, nw" })<br />
+                  .append($deleteBtn)<br />
+                  .append($editBtn);<br />
+          }
+
+
+</pre>
+    <p>
+        <b>Description :</b> <br />
+        Above code is responsible for the view when dom element is selected and unselected. <br />
+        Selected Dom Element : <br/>
+        when dom is selected above code will add two button to remove the the dom element and other to edit when Youtube or Image is the dom element.
+        CSS is added on select to show to user that the dom is selected.
+        <br /> on delete button : deleteBtnHandler is called. (this is discussed in next section)
+        <br /> on edit button : editBtnHandler is called . (this is discussed in next section)
+        
+        Unselected Dom Element :<br />
+
+        When dom is unselected , delete and edit button is removed and css view of the dom is shown as unselected.
+
+    </p>
+    <h4>Code : delete and edit button handler on dom element selected</h4>
+    <pre>
+                    function deleteBtnHandler() {<br />
+              var btn = $(this);<br />
+              var parentElement = btn.parent();<br />
+              parentElement.remove();<br />
+          }<br />
+          function editBtnHandler() {<br />
+              var btn = $(this);<br />
+              var parentElement = btn.parent();<br />
+              console.log("Editing ");<br />
+              console.log(parentElement);<br />
+              if (parentElement.hasClass("img")) {<br />
+                  var url = prompt("Provide Image URL");<br />
+                  if (url != "" && url != null)<br />
+                      parentElement.find("img").attr("src", url);<br />
+              } else if (parentElement.hasClass("youTube")) {<br />
+                  var url = prompt("Provide YouTube URL");<br />
+                  if (url != "" && url != null) {<br />
+                      var parts = url.split("/");<br />
+                      var part = parts[parts.length - 1];<br />
+                      var src = "//www.youtube.com/embed/" + part;<br />
+                      parentElement.find("iframe").attr("src", src);<br />
+                  }<br />
+              }<br />
+          }<br />
+</pre>
+    <p>
+        <b>Description :</b> <br />
+        Delete and edit button handler are used when user selects the dom element .
+        <br />
+        Delete button handler will be applicable for all the dom elements i.e H1 , div and other elements in drop down. <br />
+        Edit button handler is used only for image and youtube iframe. Since their source needs to be changed when user likes to change
+        image and youtube video.
+    </p>
+    <h4>Source Code </h4>
+    <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/CreateandDragJS.html" target="_blank">Code</a> <br />
+
+    <hr />
+
+    <h4>References</h4>
+    <a href="https://www.youtube.com/channel/UCCgliN1n-OaiYJbZV8gypNA" target="_blank">Professor Jose Annunziato Youtube</a>
+    <hr />
+</body>
+</html>

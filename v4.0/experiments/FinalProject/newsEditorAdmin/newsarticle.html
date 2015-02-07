@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Car Point</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/menu.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="../js/menu.js"></script> 
+    <script src="//cdn.rawgit.com/jpillora/xdomain/0.6.15/dist/0.6/xdomain.min.js" master="http://cs5610-sv27.rhcloud.com"></script>
+    <script>
+        var URL = "http://cs5610-sv27.rhcloud.com/getNewsEditByArticle/_id";
+        window.onload = function () {
+            var id = location.search.split('id=')[1];
+            console.log(id);
+            var url = URL.replace("_id", id);
+            console.log(url);
+
+            $.get(url).success(function (response) {
+                var pagecontent = response.pagecontent;
+                console.log(pagecontent);
+
+                loadPage(pagecontent);
+            });
+        }
+        function loadPage(pagecontent) {
+            var objStr = pagecontent;
+            console.log("came");
+            if (objStr == null)
+                return;
+            console.log("came 2");
+            var ide = JSON.parse(objStr);
+           // console.log(ide);
+            var content = ide;
+            console.log(objStr);
+
+            renderObjectArray(content);
+        }
+
+        function renderObjectArray(contentArray) {
+            for (var c in contentArray) {
+                var obj = contentArray[c];
+                var elementType = obj.type;
+                var dom = addElementForType(elementType);
+                if (obj.type == "H1") {
+                    
+                    $('h1').text(obj.html);
+                }else if (obj.type == "DIV") {
+                    document.getElementById('divchange').innerHTML = obj.html;
+                    
+                } else if (obj.type == "IMG") {
+                    document.getElementById("imagechange").src = obj.src;
+
+                } else if (obj.type == "YOU_TUBE") {
+                    document.getElementById('youtubechange').src = obj.src;
+
+                }
+                dom.css({
+                    top: obj.top,
+                    left: obj.left,
+                    width: obj.width,
+                    height: obj.height,
+                    
+
+                });
+            }
+        }
+        function addElementForType(elementType) {
+            var html = htmlTemplates[elementType];
+            var dom = $(html)
+                .css({ position: "absolute", top: 100, left: 100, width: 200, height: 100 })
+            
+            $("body").append(dom);
+            return dom;
+        }
+        var htmlTemplates = {
+            "H1": "<div class='ide h1'><h1  class='content'>Heading 1</h1></div>",
+            "DIV": "<div class='ide div'><div id='divchange'  class='content'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div></div>",
+            "IMG": "<div class='ide img'><img id='imagechange' class='content' width='100%' height='100%' src='http://img2.wikia.nocookie.net/__cb20090524204255/starwars/images/1/1a/R2d2.jpg'/></div>",
+            "YOU_TUBE": '<div class="ide youTube" style="padding:10px"><iframe id="youtubechange" class="content" width="100%" height="100%" src="//www.youtube.com/embed/8ISgVguTI-M" frameborder="0" allowfullscreen></iframe></div>'
+        };
+
+    </script>
+</head>
+<body>
+    <nav class="tab" id="tab">
+        <ul>
+            <li><a href="../FrontPage.html">Home</a></li>
+            <li><a href="../CarSeries.aspx">Car Info</a></li>
+            <li><a href="../GoGreen.aspx">GoGreen</a></li>
+            <li><a href="../MapInfo.html">Map Info</a></li>
+            <li><a href="../loginToForum/Forum.aspx">Forum</a></li>
+            <li><a href="../loginToForum/Login.aspx">Login</a></li>
+        </ul>
+        <a href="#" id="pull">Menu</a>
+    </nav>
+    <br />
+    <center>
+        <a class="btn btn-warning" href="NewsPage.html">Back</a>
+    </center>
+</body>
+</html>

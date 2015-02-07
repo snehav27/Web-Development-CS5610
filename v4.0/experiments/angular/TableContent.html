@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Adding contact To Page using Angular js</title>
+   
+  
+
+    <style type="text/css" >
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+      
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+        
+        
+         .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+    .divRow {
+        display: table-row;
+        width: auto;
+    }
+
+    .divCell {
+        float: left; /*fix for  buggy browsers*/
+        display: table-column;
+        width: 200px;
+        background-color: #ccc;
+    }
+
+    </style >
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script type="text/javascript">
+        function ContactController($scope) {
+            $scope.contacts = [
+               {
+                   'name': 'Sneha',
+                   'email': 'sneha@gmail.com',
+                   'number': '123-2343-99'
+               }
+            ];
+            $scope.addContact = function () {
+
+                $scope.contacts.push($scope.newcontact);
+                $scope.newcontact = {};
+
+            }
+        }
+    </script>
+    
+</head>
+<body class="main-wrapper" id="centered">
+    <div class="main-wrapper" id="centered">
+        <div ng-controller="ContactController">
+            <h1> Experiment 1 </h1>
+            <h2>Using AngularJS To Add contacts</h2>
+            <div class="divTable">
+                <div class="headRow">
+                    <input type="text" name="name" ng-model="newcontact.name" placeholder="Name of the Contact" />
+                    <input type="text" name="email" ng-model="newcontact.email" placeholder="Email of the Contact" />
+                    <input type="text" name="number" ng-model="newcontact.number" placeholder="Number of the Contact" />
+                    <button ng-click="addContact()">Add</button>
+                </div>
+                <div class="divTable">
+
+                    <div class="divRow">
+                        <div class="divCell"> Contact Name</div>
+                        <div class="divCell" align="center">Email ID:</div>
+                        <div class="divCell">Contact Number</div>
+                    </div>
+
+                    <div class="divRow" ng-repeat="contact in contacts">
+                        <div class="divCell">
+                            {{ contact.name }}
+                        </div>
+                        <div class="divCell">
+                            {{ contact.email }}
+                        </div>
+                        <div class="divCell">
+                            {{ contact.number }}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <h4>About the Experiment</h4>
+            <p>
+                AngularJS is developed by Google and this framwork so easy to use and developer friendly.Lot of developers started using it now.
+                In this experiment AngularJS is used to show table data and add data into table when enetered by user.
+                ContactController is the controller for this add operation. Onclick of add button , details of contact (name, email and number )
+                are sent to controller and automatically added into table without loading page. With colabration of ajax and
+                angular js we will be able to DB operation without loading the page . Angular JS can also  be used when we fetch data
+                from other API as an object.
+            </p>
+            <h4>Library for Angular JS</h4>
+            <pre>
+      &lt script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"/ &gt
+           </pre>
+            <h4> Code Snippet View:</h4>
+            <p>Note: Here I have given only name example</p>
+            <pre>
+          &lt; div ng-controller="ContactController" &gt; </br>
+          &lt; input type="text" name="name" ng-model="newcontact.name" placeholder="Name of the Contact" /&gt; </br>
+                &lt; div  ng-repeat="contact in contacts" &gt; </br>                
+                           contact.name </br>
+                       &lt; /div &gt; </br>
+            </pre>
+            <b>Description :</b>
+            <p>
+                Above code snipper is html code : </br>
+                1) ng-controller : Directive defines the application controller and it is the controller object.</br>
+                2) ng-model :  Directive binds the value of HTML controls (input, select, textarea) to application data.
+                To identify the object.</br>
+                3) ng-repeat : Directive repeats an HTML element . When lot of data needs to be shown we can use ng-repeat
+                to iterate the data and display in the screen.</br>
+                4) contact.name is ouput pasted on the screen when user enters name and add button is clicked.
+
+            </p>
+            <h4> Code Snippet Controller :</h4>
+            <pre>
+                function ContactController($scope) { </br>
+                $scope.contacts = [</br>
+                   { </br>
+                       'name': 'Sneha', </br>                     
+                   }</br>
+                ];</br>
+                $scope.addContact = function () {</br>
+                                 $scope.contacts.push($scope.newcontact);</br>
+                 }</br>
+ 
+</pre>
+            <b>Description :</b>
+            <p>
+                The $scope of the controller is the application (the HTML element) it is referred from.
+                Here same type of array data (newcontact) is pushed to existing array() to display in the table
+            </p>
+            <h2>Source Code</h2>
+            <a href="../../fileview/Default.aspx?~/experiments/angular/TableContent.html" target="_blank">View Source</a>
+
+            <hr />
+
+            <h2>References</h2>
+            <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+            <a href="http://www.stackoverflow.com" target="_blank">StackOveFLow</a>
+
+            <hr />
+
+            </br>
+            </br>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+    <h1> Experiment 1 </h1>
+    <h2>Date and time picker using HTML5 and Angular JS</h2>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script type="text/javascript">
+        function DateCtrl($scope) {
+            $scope.date = function () {                
+                var startDate = $scope.sdate;
+                var startTime = $scope.stime;
+                var endDate = $scope.edate;
+                var endTime = $scope.etime;
+               
+                if (startTime == undefined || startDate == undefined) {
+                    alert("Please select Start Date and Time");
+                    return false;
+                }
+                if (endTime == undefined || endDate == undefined) {
+                    alert("Please select End Date and Time");
+                    return false;
+                }
+                if (startDate > endDate) {
+                    alert("Start Date should be less than End Date");
+                    return false;
+                }
+                if (startDate == endDate && startTime > endTime) {
+                    alert("Start time should be less than End time when same start time and end time is selected");
+                    return false;
+                }
+                document.getElementById("showDate").innerHTML = "<b> Output :</b></br>Selected Start Date : " + startDate + "</br> Selected Start Time : " + startTime
+                    + "</br > Selected End Date : " + endDate + "</br> Selected Endd Time : " + endTime;
+            }
+        }
+
+    </script>
+    
+    <br /> <br />    
+        <div ng-controller="DateCtrl" class="demo">    
+            <b> Start Date and Time</b>   <br/>             
+            <input type="date" name="sdate" ng-model="sdate" /> 
+            <input type="time" name="stime" ng-model="stime" /> </br>
+            <b> End Date and Time</b>    <br />            
+            <input type="date" name="edate" ng-model="edate" />
+            <input type="time" name="etime" ng-model="etime" /> </br>
+            <button ng-click="date()">Done</button> </br> </br>
+    </div></br> 
+    <p id="showDate"></p> </br>
+    <h4>About the Experiment</h4>
+    <p>
+        Date and time are very important when we need to receive data on stipulated time also when we are using and API which sends responce 
+        for selected time date and time fields play a major role.</br></br>
+        <b>In this experiment I have used HTML5 date and time input type and did following validations : </b></br>
+        1) Start Date should be less than end date :</br>
+        Alert Message is shown to select the end date greater than start date</br></br>
+        2) When Same date is selected for both start date and end date and also start time is greater than end time.</br>
+        Alert Message is shown to select the end time greater than start time</br></br>
+        3) All fields in the experiment are mandatory , Incase of fail</br>
+        Alert message is shown to select all the fields.</br>
+    </p>
+   
+    <h4> HTML 5 : Code Snippet View:</h4>
+
+    <pre>
+               
+                 &lt;input type="date" name="sdate"  /&gt;</br>
+                &lt;input type="time" name="stime"  /&gt;
+
+            </pre>
+    <b>Description :</b>
+    <p>
+        Above code snippet will create a date field and text field
+
+
+    </p>
+    <h4> Code Snippet for Validations :</h4>
+    <pre>
+                    
+                   if (startDate > endDate) {</br>
+                    alert("Start Date should be less than End Date");</br>
+                    return false;</br>
+                    }</br>
+                  if (startDate == endDate && startTime > endTime) {</br>
+                    alert("Start time should be less than End time when same </br>
+                           start time and end time is selected");</br>
+                    return false;</br>
+                   }</br>
+ 
+             </pre>
+    
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/html5/Date.html" target="_blank">View Source</a>
+
+    <hr />
+
+    <h2>References</h2>
+    <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+    <hr />
+
+    </br>
+    </br>
+    </div>
+</body>
+</html>

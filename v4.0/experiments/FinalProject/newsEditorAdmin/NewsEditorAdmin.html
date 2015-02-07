@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Car Point</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <link href="css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/menu.css" />    
+    <script src="../js/menu.js"></script> 
+</head>
+<body>
+    <nav class="tab" id="tab">
+        <ul>
+            <li><a href="../FrontPage.html">Home</a></li>
+            <li><a href="../CarSeries.aspx">Car Info</a></li>
+            <li><a href="../GoGreen.aspx">GoGreen</a></li>
+            <li><a href="../MapInfo.html">Map Info</a></li>
+            <li><a href="../loginToForum/Forum.aspx">Forum</a></li>
+            <li><a href="../loginToForum/Login.aspx">Login</a></li>
+        </ul>
+        <a href="#" id="pull">Menu</a>
+    </nav>
+    <center>
+        <h2>News Editorial Page :</h2> <br />
+        <p><b>Note :</b> Please enable cors . Still working on enabling cors through javascript</p>
+    </center>
+    <div class="toolbar">
+        <div class="centered-div form-inline">
+            <select class="form-control element-type">
+                <option value="H1">Heading 1 (H1)</option>
+                <option value="DIV">Section (DIV)</option>
+                <option value="IMG">Image (IMG)</option>
+                <option value="YOU_TUBE">YouTube (Frame)</option>
+            </select>
+            <button class="btn btn-success add-btn">Add</button>
+            <button class="btn btn-primary save-btn">Save</button>
+            <button class="btn btn-primary reload-btn">Reload</button>
+        </div>
+    </div>
+    <div id="loadPageDialog" title="Select Page to Load">
+        <select class="form-control" id="pageListSelector">
+            <option>No Pages</option>
+        </select>
+    </div>
+    <center>   <div id="displayMessage" style="color:green"></div> </center>
+</body>
+</html>

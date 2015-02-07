@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Car Point</title>
+    <link rel="stylesheet" href="documentation.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="shortcut icon" href="images/documentation.png">
+    <script>
+
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                if (!$(this).hasClass("active")) {
+                    var tabNum = $(this).index();
+                    var nthChild = tabNum + 1;
+                    $("ul#tabs li.active").removeClass("active");
+                    $(this).addClass("active");
+                    $("ul#tab li.active").removeClass("active");
+                    $("ul#tab li:nth-child(" + nthChild + ")").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../FinalProject/images/CarPoint.png" />
+
+        </div>
+        <div id="body">
+            <br /><br />
+            <b> Go Green Exaplanation : </b> <br />
+
+            <p>
+                This page is for user to fetch Green Cars .  Users will be able to fetch green cars . User can select a car 
+                and get details of carbon dioxide and green scores.  They can also fetch the data of how much mileage each car provides 
+                in highway, city and both combined. user has a flexibilty to fetch these data in 3 ways . <br />
+                1)By Car model name. <br />
+                2)By Car Mileage input.<br />
+                3)By Car Green score.<br />
+                <br />
+                <b>Todays Fuel Price : </b>
+                <p> This is the information fetched from a web service to provide current fuel price . 
+                    </p>
+           
+                <br />
+            <p>
+                <b> Base Technologies used:</b> <br />
+
+                1) ASPX (to fetch data from the DB for dropdowns And table output)<br />
+                2) XML (webservice)<br /><br />
+                <b> Responsive:</b> <br />
+                Fully Responsive , no Bootstrap Used.
+                <br />
+                <br />
+                <b>  Table: </b> <br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FUEL_ECONOMY_DATA_2011">FUEL_ECONOMY_DATA_2011</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FUEL_ECONOMY_DATA_2012">FUEL_ECONOMY_DATA_2012</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FUEL_ECONOMY_DATA_2013">FUEL_ECONOMY_DATA_2013</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FUEL_ECONOMY_DATA_2014">FUEL_ECONOMY_DATA_2014</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.FUEL_ECONOMY_DATA_2015">FUEL_ECONOMY_DATA_2015</a><br />
+            </p>
+            <br /><b>Class Diagram :</b> <br /> 
+            <img src="images/GogreenClassDiagram.png" />
+
+
+            <br />
+
+            </p>
+            <ul id="tabs">
+                <li class="active">Marque Todays Fuel Information:</li>
+                <li >Go Green By Car Model</li>
+                <li>Go Green By Car Mileage</li>
+                <li>Go Green By Score</li>
+                <li>Get CO2 emission of your Car</li>
+            
+            </ul>
+            <ul id="tab">
+                <li class="active">
+
+                    <img src="images/fuelPrice.png" /> <br />
+                    <p>This is fetched on page load and these information is given by government website as xml through web service fueleconomy.gov. </p>
+                    <p>For more technical details go to the following experiments: - ><br />
+                      <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/xml/XML-ExtractionFromWebSerivice.aspx">CLICK HERE For Experiment on Web service</a>  <br />
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/Marque.html">CLICK HERE For Experiment on Marque</a></p>
+                </li>
+                <li >
+                    <b>Explanation</b>
+                    <p> When user buys a car there is always budget constraints in his mind and before buying he can check what is of that mileage car. This tab will allow user to fetch go green information by car model.</p>
+                    <b> Access to this page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/GoGreen.aspx">   <img src="images/gogreen.png"  /> <br /> </a>
+
+                    <b> User Inputs:</b><br />
+
+                    <img src="images/gogreencar1.png" />
+
+
+
+                    <p>
+                        User should give input year and car model. I have inserted records in DB for each car. We have 5 tables where data of 2011,2012,2013,2014 and 2015 years is available. According to user selection of the year and Car Model that particular year table will be used to query in DB and Car models are populated automatically.
+                    </p>
+
+                    <b>Sample Output:</b><br />
+
+
+                    <img src="images/gogreencar2.png" /> <br />
+                    <img src="images/gogreencar3.png" />
+
+                    <p>
+                        As user has selected the Acura TL model, he will be able to fetch all the information of that particular car.                        
+                    </p>
+                    <p>For more technical details go to the experiment: - >  <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/database/SearchingFromDB.aspx">CLICK HERE </a>  <br />
+                       </p>
+
+                    <b>Source Code </b>   
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreen.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreen.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreen.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreenDAO.cs" target="_blank"> DAO </a> <br />                    
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> This Tab will fetch the list of cars and their green scores according to the user input of the city mileage or highway mileage and combined mileage. In this page I have designed query that it will combine all the five years table information and fetch the information list.</p>
+                    <b>Access to this page:</b> <br />
+                    
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/GoGreenByMileage.aspx">   <img src="images/gogreenmil.png" /> <br /> </a>
+
+                    <b>    User Inputs:</b> <br />
+                    <img src="images/gogreenmil1.png" /> <br />
+                    <p>
+                        Three types of search: <br />
+                        1)	By giving by input any one of the City Mileage, Highway Mileage or Combined Mileage.<br />
+                        2)	By giving by input  any two of the City Mileage, Highway Mileage or Combined Mileage<br />
+                        3)	By giving by any of the three inputs.<br />
+                       
+
+                    </p>
+                    <b>  Output Sample example by giving any of the two input:</b> <br />
+
+
+                    <img src="images/gogreenmil2.png" /> <br />
+                    <img src="images/gogreenmil3.png" /> <br />
+                    <p>
+
+                        When user will give the mileage information of as 15 and 21 for city mileage and highway mileage
+                        Respectively code behind will create a where condition query and fetch all the cars info from 2011, 2012, 2013, 2014, 2015.
+
+
+                    </p>
+                    <p>   For more technical details go to the experiment - > <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/Gogreenmil.aspx">CLICK HERE</a></p>
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenByMileage.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenByMileage.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreen.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreenDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> This Tab will fetch the list of cars and their mileage information according to the user selection of the green house score or air pollution score. In this page I have designed query that it will combine all the five years table information and fetch the information list. </p>
+
+
+                    <b>  Access to the Page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/GoGreenByScore.aspx">   <img src="images/gogreenscr.png"  /> <br /> </a>
+                    <b>User Inputs:</b><br />
+
+                    <img src="images/gogreenscr1.png"> <br />
+                    
+                    <p>There are two ways in which user will be able to fetch the go green information.
+                            1)	By Green House Score <br />
+                            2)	Air Pollution Score <br />
+                    </p>
+                    <b>    Sample Output by green score::</b><br />
+                    <img src="images/gogreenscr2.png"> <br />
+                    <img src="images/gogreenscr3.png"> <br />
+                    <p>User when selected Greenhouse score, Cars are fetched as per Greenhouse score entered.</p>
+                    <b>Sample Output by Air pollution Score:</b> <br />
+                   
+                     
+                        <img src="images/gogreenscr4.png"> <br />
+                        <img src="images/gogreenscr5.png"> <br />
+                    <p>
+                        User when selected Air pollution score, Cars are fetched as per Air pollution score entered.
+                    </p>
+                    For more technical details go to the experiment - > <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/GogreenScore.aspx"> CLICK HERE</a>
+
+                    <br />
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenByScore.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenByScore.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreen.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreenDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+                </li>
+                <li>
+
+
+                    <b>Explanation</b>
+                    <p>
+                        I have contacted Car Carbon footprint developer for the iframe code which will show only car information.
+                    </p>
+                    <b>
+                        Access to the page:
+                    </b> <br />
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/GoGreenCarbonEmission.aspx">   <img src="images/gogreence.png"  /> <br /> </a>
+
+                    <b>
+                        User interface:
+                    </b> <br />
+                    <img src="images/gogreence2.png">
+                    <p>
+                        User should select the prepopulated drop downs from database (i.e. car name, year and car model) and enter zip code to fetch the price information.
+                    </p>
+                    
+                    <p>
+                        For more technical details go to the experiment:  -> <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/AddingIFrame.aspx"> CLICK HERE</a>
+                    </p>
+                    <br />
+
+                    <b>Source Code </b><br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenCarbonEmission.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/GoGreenCarbonEmission.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreen.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/GoGreenDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+
+
+                </li>
+            </ul>
+        </div>
+
+
+        <center>
+            <div id="footer"> 2014 Copyright © Sneha Vankireddy</div>
+        </center>
+    </div>
+</body>
+</html>

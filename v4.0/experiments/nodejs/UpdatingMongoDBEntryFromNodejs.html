@@ -1,0 +1,236 @@
+﻿    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <style type="text/css">
+            .main-wrapper {
+                height: 80%;
+                width: 96%;
+                padding: 2%;
+            }
+
+            .demo {
+                border: 2px solid #a1a1a1;
+                padding: 10px 40px;
+                background: #dddddd;
+                width: 300px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            div {
+            }
+
+            h2 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 1.1em;
+                padding: 0.5em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            h4 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 0.9em;
+                padding: 0.3em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            ul.master_navigation {
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                padding: 0;
+                list-style: none;
+                margin: 0.5em 0;
+                /*background: #FF0066*/
+            }
+
+                ul.master_navigation li {
+                    display: inline-block;
+                    padding: 0 0.5%;
+                }
+
+            a {
+                color: #08f;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                a:visited {
+                    color: #88f;
+                }
+
+                a:hover {
+                    color: #88f;
+                }
+
+            p {
+                text-align: justify;
+            }
+
+            #centered {
+                width: 800px;
+                text-align: left;
+                border: 0px;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            body {
+                width: 900px;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                background: #DBDBDD;
+            }
+
+            .pad {
+                padding: 10px;
+            }
+
+            pre {
+                direction: ltr;
+                text-align: left;
+            }
+
+            pre {
+                font-size: 0.77em;
+                line-height: 0.8em;
+                font-family: Courier, "Courier New", mono;
+                color: #000000;
+                margin: 4px;
+                padding: 4px;
+                border: solid 1px #808080;
+                background: #c3dff8;
+            }
+
+
+            .headRow {
+                display: table-header-group;
+                width: auto;
+            }
+
+
+            .divTable {
+                display: table;
+                width: auto;
+                background-color: #eee;
+                border: 1px solid #666666;
+                border-spacing: 5px;
+            }
+
+            .divRow {
+                display: table-row;
+                width: auto;
+            }
+
+            .divCell {
+                float: left; /*fix for  buggy browsers*/
+                display: table-column;
+                width: 200px;
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+    <body ng-app="" class="main-wrapper" id="centered">
+        <h1> Experiment 6 </h1>
+        <h2>Using NodeJS to Update data in MongoDB</h2>    
+        <br />
+        <b> For Update1 on Mellisa Record in DB Please Click here</b><br />
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/updateReviewById/543dfcc594ebf3000087e1bd?carname=Honda%20Accord&review=Cool%20Car">
+                updateReviewById/543dfcc594ebf3000087e1bd?carname=Honda%20Accord&review=Cool Car
+            </a>
+        </div>
+        <br />
+        <b> For Update2 on Mellisa Record in DB Please Click here</b><br />
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/updateReviewById/543dfcc594ebf3000087e1bd?carname=Honda%20Accord&review=This%20is%20a%20good%20car%20and%20affordable%20car">
+                updateReviewById/543dfcc594ebf3000087e1bd?carname=Honda%20Accord&review=This is a good car and affordable car
+            </a>
+        </div>
+        </br></br>
+        <b> To See All the content In DB in JSON format</b><br />
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/getallcarreview">
+                /getallcarreview
+            </a>  </br></br>
+        </div>
+        <h4>About the Experiment</h4>
+        <p>
+            In this experiment I have shown following operation: </br>
+           To update entry in DB using ID of the record in MongoDB.</br>
+            In websites we always need operation like update , since the data entered into db should be updated instead of delete.Instead of deleting 
+            data from DB we can update the required column of the table .
+             In the above Demo I have given 2 links to update Mellisa record. I have given 2 URL's so that we can have a clear 
+            understanding and difference between the two updates. 
+        </p>
+
+        <h4> Code Snippet For Updating Entry in DB through Node.js:</h4>
+
+        <pre>                   
+             app.get('/updateReviewById/:id', function (req, res) { </br>
+            var carreview = {            </br>
+                carname: req.query.carname,</br>
+                review: req.query.review</br>
+            };</br>
+            db.carreview.findAndModify({</br>
+                query: {_id: mongojs.ObjectId(req.params.id)},</br>
+                update: {$set:carreview}</br>
+            }, function (err, doc, lastErrorObject) {</br>
+                db.carreview.find(function (err, data) {</br>
+                    res.json(data);</br>
+                });</br>            
+            });</br>
+        });</br>
+           </pre>
+        <b>Description :</b>
+        <p>
+
+            Above code snippet is responsible to update Database according to the url query String passed.<br />
+            For Example :<br />
+            <pre>
+
+               URL LINK + updateReviewById/543dfcc594ebf3000087e1bd?carname=Honda Accord<br />
+                                    &review=This is a good car and affordable car
+                </pre> <br />
+            In the above link /updateReviewById is called and internally it will check for ID given in the URL 
+            and then checks if entry is available or not and then sends back responce to the user all the content in JSON format.
+            <b>/updateReviewById/:id</b> this code snippet checks for ID 543dfcc594ebf3000087e1bd and then updates carname and review
+            of that particular ID . <br />
+            to update car name and review values in DB program will check internally for  url parameters using <b> req.query.parameter </b>,
+             It will fetch  carname and review from url query string and update into DB   db.carreview.findAndModify command will update data into db.</br> <br />           
+            For better understanding in SQL  :<br />
+            <pre> 
+                        UPDATE carreview<br />
+                        SET carname="Honda Accord",review="This is a good car and affordable car"<br />
+                        WHERE ID="543dfcc594ebf3000087e1bd";<br />
+        </pre>
+
+        </p>
+       
+
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/nodejs/UpdatingMongoDBEntryFromNodejs.html" target="_blank">View Source</a>
+        <hr />
+
+        <h2>References</h2>
+        <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+        <hr />
+
+        </br>
+        </br>
+        </div>
+    </body>
+    </html>
+
+
+        </body>
+        </html>

@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Simple Calculator using Angular js</title>
+
+
+
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script type="text/javascript">
+        function CalculatorController($scope) {
+           
+            $scope.calculate = function () {
+                var num1 = $scope.number1;
+                var num2 = $scope.number2;
+                var selectedOption = $scope.selectBox;
+            
+
+                if (num1 == null || num1 == "" ||num2 == null || num2 == "" ||selectedOption ==null  || selectedOption =="") {
+                    alert("Please Enter Number in both the Fields and select drop down Operation");
+                    return false;
+                }
+
+                if (selectedOption == "add") {
+                    $scope.output = (num1 + num2);                
+                }
+                else if (selectedOption == "sub") {
+                    $scope.output = (num1 - num2);
+                }
+                else if (selectedOption == "div") {
+                    $scope.output = (num1 / num2);
+                }
+                else if (selectedOption == "mul") {
+                    $scope.output = (num1 * num2);
+                }
+                
+                
+
+            }
+        }
+    </script>
+
+</head>
+<body class="main-wrapper" id="centered">
+    <div class="main-wrapper" id="centered">
+        <div ng-controller="CalculatorController">
+            <h1> Experiment 2 </h1>
+            <h2>Simple Calculator Using AngularJS</h2>
+            <div class="divTable">
+                <b>Calculator</b> </br> </br>
+                <input type="number" name="number1" ng-model="number1" placeholder="Enter Number 1" />
+                <input type="number" name="number2" ng-model="number2" placeholder="Enter Number 2" /> </br > </br>
+                Select Operation :<select ng-model="selectBox">
+                    <option value="add">+</option>
+                    <option value="sub">-</option>
+                    <option value="div">/</option>
+                    <option value="mul">*</option>
+                </select>  &nbsp;
+                <button ng-click="calculate()">Calculate!!</button> </br> </br>
+                Calculated Ouput:   <p ng-bind="output"></p>
+            </div>
+
+        </div>
+        <h4>About the Experiment</h4>
+        <p>
+            After completing my first experiment , I have done another experiment on AngularJS without any reference .
+            I have designed simple calculator using AngularJS to calculate simple operation like
+            Addition,Substraction,Multiplication and Division.
+        </p>
+        <h4>Library for Angular JS</h4>
+        <pre>
+      &lt script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"/ &gt
+           </pre>
+        <h4> Code Snippet View:</h4>
+
+        <pre>
+                &lt;div ng-controller="CalculatorController"&gt; </br>
+                &lt;input type="number" name="number1" ng-model="number1" placeholder="Enter Number 1" /&gt; </br>
+                &lt;p ng-bind="output"&gt;&lt;/p&gt; </br>
+            </pre>
+        <b>Description :</b>
+        <p>
+            Above code snipper is html code : </br>
+            1) ng-controller : Directive defines the application controller and it is the controller object.</br>
+            2) ng-model :  Directive binds the value of HTML controls (input, select, textarea) to application data.
+            To identify the object.</br>
+            3) ng-bind :  directive binds application data to the HTML view.
+
+
+        </p>
+        <h4> Code Snippet Controller :</h4>
+        <pre>
+                var num1 = $scope.number1; </br>
+                var num2 = $scope.number2; </br>
+                var selectedOption = $scope.selectBox; </br>
+ 
+             </pre>
+        <b>Description :</b>
+        <p>
+            The $scope of the controller is the application (the HTML element) it is referred from.
+            Here we are fetching customer input
+        </p>
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/angular/Calculator.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h2>References</h2>
+        <a href="http://www.w3schools.com/" target="_blank">W3Schools</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+
+</body>
+</html>

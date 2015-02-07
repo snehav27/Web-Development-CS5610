@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+    </style>
+    <script type="text/javascript">
+
+        /* Function called on change event of Dept Drop Down */
+        function populateSubjectMenu() {
+            var selectedIndexVal = document.getElementById("dept_select").selectedIndex;
+            var selectedDeptVal = document.getElementById("dept_select").options[selectedIndexVal].value;
+            callAjaxFunction(selectedDeptVal);
+
+        }
+
+        /* function called to do Ajax Request */
+        function callAjaxFunction(deptVal) {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    document.getElementById("result").innerHTML = xmlhttp.responseText;
+                }
+            }
+            if (deptVal == "cse")
+                xmlhttp.open("GET", "cse.txt", true);
+            else if (deptVal == "ec")
+                xmlhttp.open("GET", "ec.txt", true);
+            xmlhttp.send();
+        }
+        
+
+       
+    </script>
+    <html>
+    <body class="main-wrapper" id="centered">
+        <h1>Simple Ajax Experiment </h1>
+        <div class="demo">
+            <form>
+
+                Department :
+                <select name="dept_select" id="dept_select" onchange="populateSubjectMenu();">
+                    <option value="">-- Select --</option>
+                    <option value="cse">Computer Science & Engineering</option>
+                    <option value="ec">Electronics & Communication</option>
+                </select>
+                </br></br>
+                <div id="result"></div>
+            </form>
+        </div>
+        <h4>About the Experiment</h4>
+        <p>
+           AJAX(Asynchronous JavaScript and XML) is way to load content dynamically without loading page .
+            This technique is used when small amount of data needs to be loaded from server without refreshing the whole page.
+            In this experiment Ajax call is done on change of the drop down value.
+            Data is fetched from a text file so fetching is done from static file .
+        </p>
+        <h4> Code snippet in the script</h4>
+        <pre></br>
+            function callAjaxFunction(deptVal) {</br>
+            var xmlhttp;</br>
+            if (window.XMLHttpRequest)</br>
+            {// code for IE7+, Firefox, Chrome, Opera, Safari</br>
+                xmlhttp=new XMLHttpRequest();</br>
+            }</br>
+            else</br>
+            {// code for IE6, IE5</br>
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");</br>
+            }</br>
+            xmlhttp.onreadystatechange=function()</br>
+            {</br>
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)</br>
+                {</br>
+                    document.getElementById("result").innerHTML = xmlhttp.responseText;</br>
+                }</br>
+            }</br>
+                if (deptVal == "cse")</br>
+                xmlhttp.open("GET", "cse.txt", true);</br>
+                else if (deptVal == "ec")</br>
+                xmlhttp.open("GET", "ec.txt", true);</br>
+           ]</br>
+            xmlhttp.send();</br>
+        }
+        
+                          
+              </br>
+     </pre>
+
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/ajax/AjaxDropDown.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+        <hr />
+    </body>
+</html>

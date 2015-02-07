@@ -1,0 +1,95 @@
+﻿html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center; /* !!! */
+        }
+
+        .centered {
+            margin: 0 auto;
+            text-align: left;
+            width: 800px;
+        }
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+
+
+
+            /*CSS Code for Google Maps*/
+        #map-canvas1 {
+            height: 53%;
+            width: 100%;
+            margin: 2px;
+            padding: 2%;
+        }
+
+        #map-canvas2 {
+            height: 53%;
+            width: 100%;
+            margin: 2px;
+            padding: 2%;
+        }
+
+        /* General button style (reset) */
+
+/* Button 3 */
+.btn-3 {
+	background: #fcad26;
+	color: #fff;
+}
+
+.btn-3:hover {
+	background: #f29e0d;
+}
+
+.btn-3:active {
+	background: #f58500;
+	top: 2px;
+}
+
+.btn-3:before {
+	position: absolute;
+	height: 100%;
+	left: 0;
+	top: 0;
+	line-height: 3;
+	font-size: 140%;
+	width: 60px;
+}
+
+/* Button 3a */
+.btn-3a {
+	padding: 20px 46px 20px 46px;
+}
+
+.btn-3a:before {
+	background: rgba(0,0,0,0.05);
+}
+.icon-star:before {
+	content: "\e00b";
+}
+
+/* Filled star */
+.icon-star:after,
+.icon-star-2:before {
+	content: "\e00c";
+}
+.btn:before,
+.icon-star:after{
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+}

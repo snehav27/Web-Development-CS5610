@@ -1,0 +1,260 @@
+﻿    
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> Fetching mongo DB to my application </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+
+        img {
+            width: 350px;
+            height: 250px;
+        }
+    </style>
+
+</head>
+<body ng-app id="centered" class="main-wrapper">
+
+    <div id="load" ng-controller="myOwnController">
+        <center>
+            <h1>Automobile News  On Load Of the Page </h1>
+            <p><b>Note: </b> Enable CORS To View the News. Still working on enabling cors.</p>
+        </center>
+        </br>
+        <table class="table" id="tab1" style="display:none">
+            <thead>
+                <tr>
+                    <th>Article heading :</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in news">
+                    <td> <a >{{n.articleheading}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <p id="displayMessage"></p>
+
+        <script>
+
+            var URL = "http://cs5610-sv27.rhcloud.com/getallnewsedit";
+
+            window.onload = function () {
+                angular.element(document.getElementById('load')).scope().getNews();
+            }
+
+            function myOwnController($scope, $http) {
+
+                $scope.getNews = function () {
+
+                    $http.get(URL).success(function (response) {
+                        var news = response;
+                        $scope.news = news;
+
+                        if (news[0] == null) {
+                            document.getElementById("tab1").style.display = "none";
+                            document.getElementById("displayMessage").innerHTML = "No News Available.";
+                        }
+                        else {
+                            document.getElementById("tab1").style.display = "";
+                            document.getElementById("displayMessage").innerHTML = "";
+                        }
+
+                    });
+                }
+            }
+
+
+
+        </script>
+        <a href="http://cs5610-sv27.rhcloud.com/getallnewsedit">
+            Click Here to check the output in JSON format from Open Shift .
+            table which I have created.
+        </a>
+        <h4>About the experiments :</h4>
+        <p> After createing news editorial page , I have thought of using MongoDB to insert the dom elements related contents.
+        After inserting i need to show the data on page load . In this experiement , I have used  :
+        <br />
+        1) Node JS<br /> 
+        2) Mogo DB<br />
+        3) Angular JS</p>
+        
+        <h4>HTML Code</h4>
+        <pre>&lt;table class="table" id="tab1" style="display:none"&gt; <br />
+            &lt;thead&gt;<br />
+                &lt;tr&gt;<br />
+                    &lt;th&gt;Article heading :&lt;/th&gt;<br />
+                &lt;/tr&gt;<br />
+            &lt;/thead&gt;<br />
+            &lt;tbody&gt;<br />
+                &lt;tr ng-repeat="n in news"&gt;<br />
+                    &lt;td&gt; &lt;a &gt;{{n.articleheading}}&lt;/a&gt;&lt;/td&gt;<br />
+                &lt;/tr&gt;<br />
+            &lt;/tbody&gt;<br />
+        &lt;/table&gt;</pre>
+        <b>Description:</b>
+        <p>HTML Will show the news article heading on the page . ng-repeat will iterate through list and fetch the article heading. <br />
+
+         </p>
+        <h4>Java Script Code</h4>
+        <pre>
+             var URL = "http://cs5610-sv27.rhcloud.com/getallnewsedit";<br />
+            window.onload = function () {<br />
+                angular.element(document.getElementById('load')).scope().getNews();<br />
+            }<br />
+            function myOwnController($scope, $http) {<br />
+                $scope.getNews = function () {<br />
+                    $http.get(URL).success(function (response) {<br />
+                        var news = response;<br />
+                        $scope.news = news;<br />
+                        if (news[0] == null) {<br />
+                            document.getElementById("tab1").style.display = "none";<br />
+                            document.getElementById("displayMessage").innerHTML = "No News Available.";<br />
+                        }<br />
+                        else {<br />
+                            document.getElementById("tab1").style.display = "";<br />
+                            document.getElementById("displayMessage").innerHTML = "";<br />
+                        }<br />
+                    });<br />
+                }<br />
+            }
+        </pre>
+        <b>Description: </b>
+        <p> I need to show the article on the page on load so here I have used   window.onload . Window onload will fetch details on the page
+        on load which is javascript call on page load. <br />
+            <b>angular.element(document.getElementById('load')).scope().getNews();</b> <br />
+        will fetch details on page load.  <br />
+
+        <b> For more details on myOwnController functionality <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/CarEquipmentDetails.aspx">CLICK HERE</a> </b> 
+        </p>
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/FetchingFromMongoDB.html" target="_blank">Code</a> <br />
+
+        <hr />
+
+        <h4>References</h4> 
+       Previous Experiments knowledge<br />
+        <a href="http://stackoverflow.com/">Stack Over flow</a><br />
+</body>
+
+</html>

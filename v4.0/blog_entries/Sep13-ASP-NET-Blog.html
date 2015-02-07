@@ -1,0 +1,79 @@
+﻿<h2>Blog for first experiment on ASP .NET  </h2>
+
+        <hr />
+
+           <p>
+              This is my first encounter with .NET , I have always wondered how .NET coding structure would be .
+              I have spent my whole day (Sep 11) stdying about .NET , to my surprise it is similar to JAVA web development . 
+              Methods were written inside Scripts in C# language/VB .        
+             <br />
+            <br />
+
+
+            <b>Timer Control:</b></br>
+            <br />
+            I was excited to do my first experiment in .NET .  Timer control would be very useful when 
+               periodical update of Live data  content  . For example : Gold price , Stock price, 
+               Cricket Score. Which will also play significant part in my future project.
+               </br>
+              I have understood the concept of Update panel ,trigger,content-template from this experiment. 
+            <br />
+               <B>Problem faced :</B></br>
+               I have faced a problem where I have found in JAVA we use .equals method to compare two strings but in C# we use .Equals -->
+               E was in caps  . It took sometime to realize the difference.
+               
+               <b>Code Snippet : </b> </br>
+               <p>selectedText.Equals("5")</p>
+
+        </p>
+
+        <hr />
+
+        <p>
+            <b> Responsive Image : </b>
+            Responsive Images are used to shrink and expand the image in the website as per screen size.
+
+            I have learnt how to use @media screen in style such that images become more resposive to 
+            the screen for the device which we are using.
+        </p>
+
+<b>Code Snippet : </b> </br>
+<p>  @media screen and (max-width: 620px) { </br>
+            #rspImage {</br>
+                width: 340px;</br >
+            }</br>
+        }</p>
+
+        <hr />
+        <p>
+            <b>   Loading Gif :</b> 
+            Loading image will show background processd is still happening and
+             restrict user from right click or any other operation. From this experiment I understood differnt ways 
+            of showing loading screen.Page request manager is one of the way used for the ecperiment to load the image on the screen.     
+             <br />
+            
+           
+
+            <br />
+            <b>Code Snippet:</b>
+            <br />
+            <p>
+                // Intializing Page Request Manager object to access the </br >
+
+                var progressBarPRM = Sys.WebForms.PageRequestManager.getInstance(); </br >
+
+                //Raised during the initialization of the asynchronous postback. </br >
+
+                progressBarPRM.add_initializeRequest(progressBarPRM_InitializeRequest); </br >
+
+                //Raised after an asynchronous postback is finished </br >
+
+                progressBarPRM.add_endRequest(progressBarPRM_EndRequest); </br >
+            </p>
+
+
+            <br />
+
+                    
+        </p>
+

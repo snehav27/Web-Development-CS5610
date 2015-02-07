@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        @media screen and (min-width: 40em) {
+            .logo {
+                background-image: url('../../images/webImages/header.jpg');
+                background-size: 100%;
+                width: 100%;
+                padding-top: 20.8%;
+                height: 0;
+                text-indent: -9999px;
+            }
+            }
+
+            .main-wrapper {
+                height: 80%;
+                width: 96%;
+                padding: 2%;
+            }
+
+
+            h1 {
+                text-align: center;
+            }
+
+
+            h2 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 1.1em;
+                padding: 0.5em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            h4 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 0.9em;
+                padding: 0.3em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            ul.master_navigation {
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                padding: 0;
+                list-style: none;
+                margin: 0.5em 0;
+                /*background: #FF0066*/
+            }
+
+                ul.master_navigation li {
+                    display: inline-block;
+                    padding: 0 0.5%;
+                }
+
+            a {
+                color: #08f;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                a:visited {
+                    color: #88f;
+                }
+
+                a:hover {
+                    color: #88f;
+                }
+
+            p {
+                text-align: justify;
+            }
+
+            #centered {
+                width: 800px;
+                text-align: left;
+                border: 0px;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            body {
+                width: 900px;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                background: #DBDBDD;
+            }
+
+            .pad {
+                padding: 10px;
+            }
+
+            pre {
+                direction: ltr;
+                text-align: left;
+            }
+
+            pre {
+                font-size: 0.77em;
+                line-height: 0.8em;
+                font-family: Courier, "Courier New", mono;
+                color: #000000;
+                margin: 4px;
+                padding: 4px;
+                border: solid 1px #808080;
+                background: #c3dff8;
+            }
+
+
+            .headRow {
+                display: table-header-group;
+                width: auto;
+            }
+
+
+            .divTable {
+                display: table;
+                width: auto;
+                background-color: #eee;
+                border: 1px solid #666666;
+                border-spacing: 5px;
+            }
+
+            .divRow {
+                display: table-row;
+                width: auto;
+            }
+
+            .divCell {
+                float: left; /*fix for  buggy browsers*/
+                display: table-column;
+                width: 200px;
+                background-color: #ccc;
+            }
+    </style>
+</head>
+<body class="main-wrapper" id="centered">
+    <h1> Experiment 3:</h1>
+    <h2> Resposive Web Page with Content and Image </h2>
+    <h1 class="logo">Car Point</h1>
+    In modern world, we cannot imagine a life without cars. In some ways, our life depended on cars.Cars are very fast and comfortable.
+    Some say speed is everything , some say milage of the car makes a key point in choosing the car . Whatever it is you will find a perfect CAR
+    in this site.
+    <h4>About the Experiment :</h4>
+    <p>
+        This experiment is continuation of <a href="http://localhost:51518/experiments/responsiveweb/ResponsiveNavigationContent.html">
+    Experiment2 of Responsive Image</a>. <br /><br /> 
+        In this experiment I have tried following responsive : changing Image to text according to screen size. <br />
+
+    </p>
+    <h4> CSS code snippet : Media Query :</h4>
+    <pre>       .logo { <br />
+                background-image: url('../../images/webImages/header.jpg');<br />
+                background-size: 100%;<br />
+                width: 100%;<br />
+                padding-top: 20.8%;<br />
+                height: 0;<br />
+                text-indent: -9999px;<br />
+            }</pre>
+    <h4> HTML View Code Snippet:</h4>
+    <pre>
+        &lt;h1 class="logo"&gt;Car Point &lt;/h1&gt;
+</pre>
+
+    <b> Description :</b>
+    <p> In this scenerio  Image changes and converts to Text inside H1 after particular screen size. 
+    Class logo  will get the properties in css .logo and apply properties in that H1 where image is overlays on text,
+     once the screen width reduces it will make the Image disappear and only Text inside H1 will be viewed.</p>
+    <p>
+        1) background-image : gets the image which will be overlayed on the text.<br />
+        2)  text-indent: -9999px; : will make text to hide behind image until the screen size is reduced.
+        
+    </p>
+    <h4>Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/experiments/responsiveweb/AddLogoWithImage.html" target="_blank">View Source</a>
+
+    <hr />
+
+    <h4>References</h4>
+    <a href="http://bradfrost.github.io/this-is-responsive/" target="_blank">This is Responsive Website</a>
+
+    <hr />
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Car Point</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/menu.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="../js/menu.js"></script> 
+    
+</head>
+<body  ng-app>
+    <nav class="tab" id="tab">
+        <ul>
+            <li><a href="../FrontPage.html">Home</a></li>
+            <li><a href="../CarSeries.aspx">Car Info</a></li>
+            <li><a href="../GoGreen.aspx">GoGreen</a></li>
+            <li><a href="../MapInfo.html">Map Info</a></li>
+            <li><a href="../loginToForum/Forum.aspx">Forum</a></li>
+            <li><a href="../loginToForum/Login.aspx">Login</a></li>
+        </ul>
+        <a href="#" id="pull">Menu</a>
+    </nav><br />
+    <div  id="load" ng-controller="myOwnController">
+        <center>
+            <h1>Automobile News   </h1>
+            <p><b>Note: </b> Enable CORS To View the News. Still working on enabling cors.</p>
+        </center> 
+        </br>
+        <table class="table" id="tab1" style="display:none">
+            <thead>
+                <tr>
+                    <th>Article heading :</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in news">
+                    <td> <a href="newsarticle.html?id={{n._id}}">{{n.articleheading}}</a></td>                 
+                </tr>
+            </tbody>
+        </table>
+        <p id="displayMessage"></p>
+       
+    <script>
+
+        var URL = "http://cs5610-sv27.rhcloud.com/getallnewsedit";
+       
+        window.onload = function () {
+            angular.element(document.getElementById('load')).scope().getNews();
+        }
+
+        function myOwnController($scope, $http) {
+           
+            $scope.getNews = function () {
+
+                $http.get(URL).success(function (response) {
+                    var news = response;
+                    $scope.news = news;
+
+                    if (news[0] == null) {
+                        document.getElementById("tab1").style.display = "none";
+                        document.getElementById("displayMessage").innerHTML = "No News Available.";
+                    }
+                    else {
+                        document.getElementById("tab1").style.display = "";
+                        document.getElementById("displayMessage").innerHTML = "";
+                    }
+
+                });
+            }
+        }
+        
+     
+
+    </script>
+
+
+
+
+</body>
+
+</html>

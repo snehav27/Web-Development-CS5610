@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Car Point</title>
+    <link rel="stylesheet" href="documentation.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="shortcut icon" href="images/documentation.png">
+    <script>
+
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                if (!$(this).hasClass("active")) {
+                    var tabNum = $(this).index();
+                    var nthChild = tabNum + 1;
+                    $("ul#tabs li.active").removeClass("active");
+                    $(this).addClass("active");
+                    $("ul#tab li.active").removeClass("active");
+                    $("ul#tab li:nth-child(" + nthChild + ")").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../FinalProject/images/CarPoint.png" />
+
+        </div>
+        <div id="body">
+            <br /><br />
+            <b> Forum Exaplanation : </b> <br />
+
+            <p>
+                Every website has forum, where people come and discuss about website related topics.
+                In my website, I have created forum so that users will be able to discuss about the cars, sell their cars, off topics.
+                 <br />
+                This Module consists of three sections
+                1)Forum Page consists of Topics<br />
+                2)Posts Page associated to topics.<br />
+                3)Post page containing comments posted by other users. <br />
+                <br />
+                <b>Todays Fuel Price : </b>
+            <p>
+                This is the information fetched from a web service to provide current fuel price .
+            </p>
+
+            <br />
+            <p>
+                <b> Base Technologies used:</b> <br />
+
+                1) ASPX <br />
+                2) HTML,CSS <br /><br />
+                <b> Responsive:</b> <br />
+                Fully Responsive , no Bootstrap Used.
+                <br />
+                <br />
+                <b>  Table: </b> <br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.Posts">Posts</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.Topics">Topics</a><br />
+                <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.Comments">Comments</a><br />
+           </p>
+            <p>
+                <b> Access to this page:</b> <br />
+
+                <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/loginToForum/Login.aspx">  <img src="images/loginButton.png" /> <br /> </a>
+            </p>
+            <p>
+                <b>Common buttons in Forum</b> <br />
+
+                <img src="images/commonbuttons.png" /> <br />
+                Click on my profile in the forum any time will take user back to his profile. <br />
+                Click on logout , will clear the session will direct user to login page.
+            </p> <br />
+            <br /><b>Class Diagram :</b> <br />
+            <img src="images/ForumClassDiagram.png" />
+
+            <ul id="tabs">
+                <li class="active">Forum Page:</li>
+                <li>Posts In a Topic</li>
+                <li>Comments In a Post</li>             
+            </ul>
+            <ul id="tab">
+                <li class="active">
+
+                   <p><b>Explanation</b> <br />
+                       Here user will be able to see different topics name according to the information in the table.</p>
+                    <img src="images/forum1.png" />
+                    <p>
+                        Each topic is associated with topic id. In the above table we have four topic names.
+                        This table is updated with Last post title, last post username and last postdate time 
+                          whenever a new post created inside that particular topic. i.e. <br />
+                        In the above case Sell and  Buy topic has last post created by admin. I can create more topics by adding another record in the topics table.
+                      </p>
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Forum.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Forum.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/Forum.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/ForumDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> Every post is associated with a topic. When a post is created on clicking on a topic, then that post will be associated with that topic ID in posts table.
+                    <br />In the below example explained I have selected the topic Sell and buy in the forum:
+                    </p>
+                   
+
+                    <img src="images/post.png" /> <br />
+
+                    <b>URL Pattern:</b> <br />
+                    <img src="images/post1.png" /><br />
+                    <p>
+                        Using above URL, we are sending topic id of the topic to fetch the posts that are created under the topics from the post table.
+                    </p>
+                    <img src="images/post2.png" /><br />
+
+
+                    <b>Creating new post</b><br />
+                    <p>Access to the page :</p>
+
+                    <img src="images/post3.png" /> <br />
+                    <p>User is redirected to below page when clicked on create new post button.</p>
+                    <img src="images/post4.png" />
+
+                    <p>
+                        After entering title and message user will be able to click on submit button. On click on the submit button thread record is created posts table. 
+                        On cancel button click ,user is sent back to posts page.
+                    </p>
+                 
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Topics.aspx" target="_blank"> POSTS PAGE ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Topics.aspx.cs" target="_blank"> POSTS Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/NewPost.aspx" target="_blank"> NEW POST PAGE ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/NewPost.aspx.cs" target="_blank"> NEW POST Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/Forum.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/ForumDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> Page view of the posts where users will be able to comment on the thread and discuss.</p>
+                    <img src="images/comment.png" /> <br />
+                    <p>Creating comments on the posts. Again in this case comments are associated with posts that are associated with.  <br />
+                    This relationship is maintained using comment ID and Post ID column in the comments table.</p>
+                    <img src="images/comment1.png" /> <br />
+                    
+                   
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Post.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/loginToForum/Post.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/Forum.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/ForumDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/demo.css" target="_blank"> Style Sheet of html page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/component.css" target="_blank"> Style Sheet to adjust the components in the page </a> <br />
+   </li>
+               
+            </ul>
+        </div>
+
+
+        <center>
+            <div id="footer"> 2014 Copyright © Sneha Vankireddy</div>
+        </center>
+    </div>
+</body>
+</html>

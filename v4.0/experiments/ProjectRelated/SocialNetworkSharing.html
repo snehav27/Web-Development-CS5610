@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sharing content through social networking</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+
+        span.stars, span.stars span {
+            display: block;
+            background: url(stars.png) 0 -16px repeat-x;
+            width: 80px;
+            height: 16px;
+        }
+
+            span.stars span {
+                background-position: 0 0;
+            }
+    </style>
+</head>
+<body id ="centered" >
+
+    <h1>Sharing Content</h1>
+   <h2> Sharing Content in Social Networking Sites.</h2>
+        <script src="//platform.linkedin.com/in.js" type="text/javascript">
+            lang: en_US
+        </script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <script type="text/javascript">
+            window.twttr = (function (d, s, id) {
+                var t, js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                { return } js = d.createElement(s); js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+                return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } })
+            }(document, "script", "twitter-wjs"));
+        </script>
+    <div class="demo">
+        <ul>
+            <li>
+                <div class="fb-share-button" data-href="http://net4.ccs.neu.edu/home/snehav27/"></div>
+            </li>
+            <li>
+                <div class="g-plus" data-action="share" data-href="http://net4.ccs.neu.edu/home/snehav27/"></div>
+            </li>
+            <li>
+                <a class="twitter-share-button"
+                   href="https://twitter.com/share">
+                    Tweet
+                </a>
+            </li>
+            <li>
+                <script type="IN/Share">
+                </script>
+            </li>
+        </ul>
+    </div>
+
+    <h4>About the Experiment</h4>
+    <p>
+       Sharing the content is common now a days . If you provide your website sharing buttons , it may gain more popularity. Content can be shared in websites like
+        Facebook , Twitter, Google+ and Linked IN .
+        <h4>Code for facebook share :</h4>
+        <pre>
+
+            (function (d, s, id) { <br />
+                var js, fjs = d.getElementsByTagName(s)[0];<br />
+                if (d.getElementById(id)) return;<br />
+                js = d.createElement(s); js.id = id;<br />
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";<br />
+                fjs.parentNode.insertBefore(js, fjs);<br />
+            }(document, 'script', 'facebook-jssdk')); <br />
+ 
+        </pre>
+        <p> <b>Description : </b> <br />
+    Above code will fetch the java script source so that the share button works , js.src will contain all the javascript
+    styling image of the fb share .Facebook provides HTML5,IFRAME,URL format for showing share button.
+    I have used HTML5 code provided by facebook.
+         
+        </p>
+        <pre>
+
+            &ltdiv class="fb-share-button" data-href="http://net4.ccs.neu.edu/home/snehav27/"&gt&lt/div&gt
+        </pre>
+    <p><b>Description : </b>
+    In the above code class can be changed to customized class for changing the way button looks. <br />
+    data-href: is the link which you want to share with your freinds and clients.
+    data-layout : Selects one of the different layouts that are available for the plugin. Can be one of "box_count", "button_count", "button", "link", "icon_link", or "icon".
+
+    </p>
+
+        <h4>Code for twitter share :</h4>
+        <pre>
+                    window.twttr = (function (d, s, id) { <br />
+                var t, js, fjs = d.getElementsByTagName(s)[0]; <br />
+                if (d.getElementById(id)) <br />
+                { return } js = d.createElement(s); js.id = id; <br />
+                js.src = "https://platform.twitter.com/widgets.js"; <br />
+                fjs.parentNode.insertBefore(js, fjs); <br />
+                return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } }) <br />
+            }(document, "script", "twitter-wjs")); <br />
+
+ 
+        </pre>
+    <p>
+        <b>Description : </b> <br />
+        Above code will fetch the java script source so that the share button works , js.src will contain all the javascript
+        styling image of the twitter button share .Twitter provides different types of share button.Twitter provides only HTML5 code
+        <pre>
+                     &lta class="twitter-share-button" <br />
+                   href="https://twitter.com/share"&gt <br />
+                    Tweet <br />
+                &lt/a&gt <br />
+        </pre>
+    <p>
+        <b>Description : </b>
+        In the above code class can be changed to customized class for changing the way button looks. <br />
+        href: is the link which you want to share with your freinds and clients.
+       
+
+    </p>
+
+        <h4>Code for Google plus :</h4>
+
+        <pre>
+       &ltscript src="https://apis.google.com/js/platform.js" async defer&gt&lt/script&gt <br />
+    &ltdiv class="g-plus" data-action="share" data-href="http://net4.ccs.neu.edu/home/snehav27/"&gt&lt/div&gt <br />
+        </pre>
+    <p><b>Description : </b> <br />
+        The simplest way to include a share button on your page is just by including the necessary JavaScript and adding a share tag. This basic implementation will include the standard 20px share button with a variable width.
+    data-action:  is responsible to share the content into the google+ account.
+    data-href : here website will be mentioned which needs to be share in the google + account.
+    </p>
+        <h4>Code for Linked IN :</h4>
+        <pre>
+            &ltscript src="//platform.linkedin.com/in.js" type="text/javascript"&gt <br />
+            lang: en_US <br />
+           &lt/script&gt <br />
+            &ltscript type="IN/Share"&gt <br />
+            &lt/script&gt <br />
+
+        </pre>
+    <p>
+        <b>Description : </b> <br />
+      
+        Linkedin provided pre defined javascript which needs to be added to the page. 
+        Also to display the linkedin button you need to ass a script file to ur page which is totally different from other Share button
+        providers.
+    </p>
+        <h4>Source</h4>
+        <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated/SocialNetworkSharing.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="https://developers.facebook.com/" target="_blank">Facebook Developer Site</a><br />
+        <a href="https://dev.twitter.com/web/tweet-button" target="_blank">Twitter Developer Site</a><br />
+        <a href="https://developers.google.com/" target="_blank">Google Developer Site</a><br />
+        <a href="https://developer.linkedin.com/" target="_blank">LinkedIn Developer Site</a><br />
+        <hr />
+
+
+</body>
+</html>

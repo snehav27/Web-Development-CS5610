@@ -1,0 +1,216 @@
+﻿    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <style type="text/css">
+            .main-wrapper {
+                height: 80%;
+                width: 96%;
+                padding: 2%;
+            }
+
+            .demo {
+                border: 2px solid #a1a1a1;
+                padding: 10px 40px;
+                background: #dddddd;
+                width: 300px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            div {
+            }
+
+            h2 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 1.1em;
+                padding: 0.5em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            h4 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 0.9em;
+                padding: 0.3em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            ul.master_navigation {
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                padding: 0;
+                list-style: none;
+                margin: 0.5em 0;
+                /*background: #FF0066*/
+            }
+
+                ul.master_navigation li {
+                    display: inline-block;
+                    padding: 0 0.5%;
+                }
+
+            a {
+                color: #08f;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                a:visited {
+                    color: #88f;
+                }
+
+                a:hover {
+                    color: #88f;
+                }
+
+            p {
+                text-align: justify;
+            }
+
+            #centered {
+                width: 800px;
+                text-align: left;
+                border: 0px;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            body {
+                width: 900px;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                background: #DBDBDD;
+            }
+
+            .pad {
+                padding: 10px;
+            }
+
+            pre {
+                direction: ltr;
+                text-align: left;
+            }
+
+            pre {
+                font-size: 0.77em;
+                line-height: 0.8em;
+                font-family: Courier, "Courier New", mono;
+                color: #000000;
+                margin: 4px;
+                padding: 4px;
+                border: solid 1px #808080;
+                background: #c3dff8;
+            }
+
+
+            .headRow {
+                display: table-header-group;
+                width: auto;
+            }
+
+
+            .divTable {
+                display: table;
+                width: auto;
+                background-color: #eee;
+                border: 1px solid #666666;
+                border-spacing: 5px;
+            }
+
+            .divRow {
+                display: table-row;
+                width: auto;
+            }
+
+            .divCell {
+                float: left; /*fix for  buggy browsers*/
+                display: table-column;
+                width: 200px;
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+    <body ng-app="" class="main-wrapper" id="centered">
+        <h1> Experiment 2 </h1>
+        <h2>Static JSON Node.js Responce</h2>   
+        <br /> <br />
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/somejson"> Click Here to see the Output</a>  </br></br>
+            <img src="../../images/webImages/JSON-NodeJS.png" alt="Node JS Output">
+        </div>
+        <h4>About the Experiment</h4>
+        <p>            
+            This Experiment is continuation of <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/nodejs/SimpleNodeJS.html">Experiment 1</a> <br /><br />
+            JSON(JavaScript Object Notation) is the open standard format uses human readable text to transmit data object consisting of attribute value pair.
+            It will return ordered list of values . In other laguage you can say them as  lists , vectors , array or sequence .
+            From rest API JSON responce makes it easy in the receiving  end to understand easily.
+        </p>
+
+        <h4> Simple Node.js : Code Snippet View:</h4>
+
+        <pre>
+                   
+            app.get('/somejson' ,function(req,res){ </br>
+        res.json({ </br>
+            hi: "welcome", </br>
+            website: "Sneha Website", </br>
+            location: "Boston", </br>
+            college: "Northeastern University", </br>
+            course: "Web Development", </br>
+            experiment: "JSON Experiment with Node.js"        </br>        
+                 }); </br>
+              }) </br>
+
+       </pre>
+        <b>Description :</b>
+        <p>
+
+            Above code snippet will send a json responce to the client who have accessed the link.
+            <br />
+            res.json will send responce in JSON format.
+            Here in the above code snippet there are two value pair items :
+            For example : Hi is key and "welcome" is a answer for the key.so when in receiving end and same applies to 
+            other parameters in the above code snippet.
+
+        </p>
+        <h4> Required Libraries: Code Snippet View:</h4>
+
+        <pre>
+            var express = require('express'); </br>
+            var app = express ; </br>
+       </pre>
+        <b>Description :</b>
+        <p>
+
+            Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+            Its makes developer life easy and to make their own rest API.
+
+        </p>
+
+
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/nodejs/JSON-NodeJS.html" target="_blank">View Source</a>
+        <hr />
+
+        <h2>References</h2>
+        <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+        <hr />
+
+        </br>
+        </br>
+        </div>
+    </body>
+    </html>
+
+
+    </body>
+    </html>

@@ -1,0 +1,70 @@
+﻿<h2>Blog ... Exploring how to make page Responsive and to extract XML from Webservice</h2>
+
+        <hr />
+
+           <p>
+             I have done 4 Expriments this week .
+              I have worked on following Eperiments : </br>
+              1) Extracting XML information from Web Service with simple proxy. <br />
+              2) Resposive Navigation Bar<br />
+              3) Responsive Image to convert to Text as screen turns small <br />
+              4) Responsive Table content.<br />
+             <br />
+            <br />
+
+               
+               <b> Extracting XML information from Web Service with simple proxy:</b></br>
+                          
+               I have done same experiment through javascript which failed without CORS : SO I had to shift to .NET to use
+               SimpleProxy class written by Prof. Richard Rasala to obtain the response .<br />  Using simple proxy will eliminate
+               problem of CORS(which stands for Cross-Origin Resource Sharing, is an HTML5 feature that allows one site to access
+               another site's resources despite being under different domain names.) .<br />  In my case mentioning CORS feature in JAVA script
+               didnt work.<br />
+               Failed experiment in the following link : 
+               <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ajax/Fuel%20Prices.html"> Link</a>
+               <br />     <br />   
+               
+               I have tried using Ajax and xml extraction , this worked when CORS was enabled manually in the browser. 
+                    
+            </br>   
+               Used the following code , but didnt work.    
+               <pre>
+                    xmlhttp.open('GET', url, true);             <br />              
+                    xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*"); <br />
+                    xmlhttp.setRequestHeader("Access-Control-Allow-Headers", "X-Requested-With");<br />
+                    xmlhttp.send();<br />
+</pre>                              
+        </p>
+
+            <b> Resposive Navigation Bar :</b> <br />
+           For future project I need a navigation bar which is required to work on both the small devices as well as large devices.
+            Which will change its view mode according to the user viewing device.
+        </p>
+<b> Responsive Image to convert to Text as screen turns small :</b></br>
+
+            This experiment is done to show image in larger screen devices and to show text in smaller screen devices.
+            Images occupy more space in the devices becuase they are downloaded and stored in temp folder. Until unless they are deleted they will occupy space , which
+            is okay in large screen devices but same will be not good when used in smaller devices which will take time to load and store lot of space.
+            So this way of designing should be good for smaller screen devices and larger screen devices as per performance.
+
+<p>
+<p>
+    <b> Responsive Table content :</b><br/>
+    I always wondered if there is any way to make table responsive since tables are not designed to shrink like div or p (paragraph) .
+    wrapping will make table not only ugly also clients or users of the site unhappy. When I was going through articles of responsive table.
+    I found a very useful article which explains different type of table changes according to screen size. The method I have used was the best one
+    because no data will be hided from the user.<br />
+    
+</p>
+<b>Summary : </b> </br>
+<p>
+    This Week I have got more understanding on responsive web pages .</br>
+    1)From the Jose class I have got an idea on content change , drag , update functions through JQuery . I have got an idea , will try to implement it 
+        but not sure if its gonna work , thought of creating editorial page for admin where news of car information will be posted  with Image ,youtube link, 
+    and the posted information will sent to the mongoDb and inserted DB in Openshift. And there will page which will show the news feed . </br> 
+    Will surely try this , but not sure if thats gonna work.</br> 
+    2)I was not able to connect to database ,  got information from Prof RASALA that I need to give IP address inorder to access the server. 
+    I was trying to insert details in DB from db text data downloaded from <a href="fueleconomy.gov"> FUEl GOV</a> . Will be doing this next week
+    and will create a page with  milage information , where user will be able to search and get  milage information  of the car.
+</p>
+

@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 700px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+    <h1> Experiment 3 </h1>
+    <h2>Hosting Angular JS Content in Open Shift</h2>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <br /> <br />
+    <div class="demo">
+        <a href="http://cs5610-sv27.rhcloud.com/carReiview.html"> Click Here to see the Output</a>  </br></br>
+        <img src="../../images/webImages/staticAngularNodeJS.png" alt="Node JS Output">
+    </div>
+    <h4>About the Experiment</h4>
+    <p>
+     In this experiment  I have hosted static angular JS content in the Open Shift. To get 
+        gist on how to host in Open Shift and deploy the content into git . 
+        More info on AngularJS : <a href="http://net4.ccs.neu.edu/home/snehav27/story/index.htm?../experiments/angular/story.txt">Angular JS Experiments</a><br/>
+    </p>
+
+    <h4> Angular JS Content : Code Snippet View:</h4>
+
+    <pre>
+
+        &lt;tr&gt; &lt;ng-repeat="carCtrl in carDetails"&gt; </br>
+        &lt;td&gt;{{carCtrl. user}}&lt/td&gt; </br>
+        &lt;td&gt;{{carCtrl. carname}}&lt/td&gt; </br>
+        &lt;td&gt;{{carCtrl. review}}&lt/td&gt; </br>
+                        &lt;/tr&gt; </br>
+
+   </pre>
+    <b>Description :</b>
+    <p>
+
+        Above code is view page where user , carname , review is fetched from the carDetails object which is set by controller 
+        in the javascript page.
+    </p>
+    <h4> Angular JS Content : Code Snippet Controller:</h4>
+
+    <pre>
+            function CarReviewCtrl($scope,$http) { </br>
+    console.log("angular from services");</br>
+    var carReview1 = {</br>
+        user: "sneha",</br>
+        carname: "bmw",</br>
+        review: "this is an awsome car"    </br>
+    };</br>
+    var carReview2 = {</br>
+        user: "swetha",</br>
+        carname: "audi",</br>
+        review: "this is an cool car to have"</br>
+    };</br>
+    var carReviews = [carReview1, carReview2];</br>
+    $scope.carDetails = carReviews;</br>
+}
+   </pre>
+
+    <b>Description :</b>
+    <p>
+
+        Above code snippet will send a static page responce to the client who have accessed the link.
+        In the above code controller will set static content declared in carReview1 and carReview2 and assign it to the Cardetails which is refered in the
+        html page .
+        $scope.carDetails will set the scope variable which will reflect in the html page.
+    </p>
+
+
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/nodejs/StaticAngularJSContent.html" target="_blank">View Source</a>
+    <hr />
+
+    <h2>References</h2>
+    <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+    <hr />
+
+    </br>
+    </br>
+    </div>
+</body>
+</html>
+
+
+</body>
+</html>

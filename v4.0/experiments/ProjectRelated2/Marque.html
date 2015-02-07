@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Marque</title>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+
+        img {
+            width: 350px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body id="centered" class="main-wrapper">
+
+    <h1> Using Marquee in HTML</h1>
+
+    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Hover To Stop This Text....</marquee>
+
+    <h4>About the Experiment</h4>
+    <p> The HTML < marquee> element is used to insert a scrolling area of text. Marque is an intresting element in html.
+    Marque can be used for scrolling news, displaying any content that can be scrolled. We can add attributes to control the scrolling
+    effect. I have used scrolling effect to show todays fuel price in my final project.
+    </p>
+
+    <h4> Code</h4>
+
+    <pre>   
+            
+         &lt;marquee behavior="scroll" direction="left" onmouseover="this.stop();"  <br />
+onmouseout="this.start();"&gt;Hover To Stop This Text....&lt;/marquee&gt;
+                    
+ </pre>
+    <b>Description : </b>
+    <p>   
+        behavior
+        Sets how the text is scrolled within the marquee. Possible values are scroll, slide and alternate. If no value is specified, the default value is scroll. <br />
+ Direction : will indicate the direction in which the text is scrolling .<br /><br />
+
+start : 
+Starts scrolling of the marquee. <br />
+stop : 
+Stops scrolling of the marquee.</p> 
+
+    On mouse out is when user doesnt point with mouse on the scrolling text. <br />
+    On mouse over is when user point with mouse on the scrolling text. 
+
+    <h4>Source Code </h4>
+    <a href="../../fileview/Default.aspx?~/experiments/ProjectRelated2/Marque.html" target="_blank"> HTML Code</a> <br />
+    
+    <hr />
+
+    <h4>References</h4>
+    <a href="http://www.quackit.com/" target="_blank">Quackit</a>
+    <hr />
+</body>
+</html>

@@ -1,0 +1,263 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edmund API With Angular JS</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+        img {
+            width: 350px;
+            height: 250px;
+        }
+
+    </style>
+</head>
+<body id="centered" ng-app>
+    <div class="main-wrapper" ng-controller="EdmundClientController">
+        <h1>CAR Pictures using Edmunds API using AngularJS </h1>
+        <div class="demo">
+            <select ng-model="carName">
+                <option value="200696418">Chrysler</option>
+                <option value="200700381">Jeep</option>
+                <option value="200442250">Toyota</option>
+                <option value="101265887">Audi</option>
+                <option value="200698690">Honda</option>
+                <option value="100994560">BMW</option>
+            </select> </br>
+            <button ng-click="getDetails()">Get CAR Details</button> </br>
+        </div>
+        </br> </br>
+        <table class="table" id="tab1" style="display:none">
+            <thead>
+                <tr>
+                    <th>Caption :</th>
+                    <th>Images :</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in car">
+                    <td>{{c.captionTranscript}}</td>
+                    <td><span ng-repeat="i in c.photoSrcs" ng-show="$first"><img ng-src="http://media.ed.edmunds-media.com{{i}}" /> <br /></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p id="displayMessage"></p>
+        <h4>About the Experiment</h4>
+        <p>
+            This Experiment is continuation of Car Details Experiment :
+            <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/api/CarDetailsAPI.html">Click Here For Car Details</a><br /><br />
+           In this experiment I am using Edmunds API to  get pictures of the car using the style id of that particular car. Edmunds API provides 
+            Pictures of each car maping it to style ID using JSON format. <br /><br />
+            This particular example will provide different images of CARS.<br />
+            1) Exterior Images. <br />
+            2) Interior Images.<br />
+            3) Dashboard Images.<br />
+            4) Engine Images.<br />
+
+        </p>
+        <h4> Code snippet in the script</h4>
+        <pre>
+            $http.get(url).success(function (response) {<br />
+                    var carImages = response;    <br />               
+                    $scope.car = carImages;<br />
+     </pre>
+        <p>
+            <b>Description</b></br>
+            After URL sends the request to Edmund client , response is received and results is fetched in JSON format.
+            $scope.car is required data to display image information on the screen. 
+        </p>
+        <h4> Code snippet in the Div:</h4>
+        <pre></br>
+                     &ltspan ng-repeat="i in c.photoSrcs" ng-show="$first"&gt<br />
+                     &ltimg ng-src="http://media.ed.edmunds-media.com{ {i}}" /&gt<br />
+                     &lt/span&gt<br />
+</pre></br> 
+        <p>
+        <b>Description:</b>
+            Here i is the  array item of the car where we have list of images , 
+            <b>ng-repeat </b> can be used to iterate and fetch data of search result.
+            In the i object there are different size of the images 
+            <b>ng-show="$first"</b> will take the first array item from JSON format and show the data 
+            on the screen.
+            Here we are fetching first array item because API will return same images with different width ,height.         
+        </p>
+        <h4> URL Used : </h4>
+        <pre></br>
+  https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=carstyle&fmt=json </br>
+        </pre></br>
+        <b>Descripton:</b>
+        One input to url will given by user through select box in front end screen and car style ID will be replaced in url
+        and information will be fetched.
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/api/CarImagesAPI.html" target="_blank">View Source</a>
+        <hr />
+
+        <h4>References</h4>
+        <a href="http://developer.edmunds.com//" target="_blank">Edmunds Developer Site</a>
+        <hr />
+    </div>
+
+    <script>
+
+        var URL = "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=carstyle&fmt=json&api_key=ea7qsju5c39uqr697b9vjg4x";
+        var headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+
+        function EdmundClientController($scope, $http) {
+            $http.headers = headers;
+            $scope.getDetails = function () {                
+                var carstyle = $scope.carName;
+                console.log(carstyle);
+                if (carstyle == "") {
+                    alert("Please select any car name");
+                    return false;
+                }
+                var url = URL.replace("carstyle", carstyle);
+                console.log(url);
+                $http.get(url).success(function (response) {
+                    var carImages = response;                   
+                    $scope.car = carImages;
+                    
+                    if (carImages[0].photoSrcs[0] == null) {
+                        document.getElementById("tab1").style.display = "none";
+                        document.getElementById("displayMessage").innerHTML = "No Data Available Retry with another Car.";
+                    }
+                    else {
+                        document.getElementById("tab1").style.display = "";
+                        document.getElementById("displayMessage").innerHTML = "";
+                    }
+
+                });
+            }
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

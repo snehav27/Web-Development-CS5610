@@ -1,0 +1,257 @@
+﻿    
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edmund API With Angular JS</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: pink;
+            color: grey;
+        }
+    </style>
+</head>
+<body id="centered" ng-app>
+    <div class="container" ng-controller="EbayClientController" class="main-wrapper">
+        <h1>Edmunds API using AngularJS </h1>
+        <p>
+            <b>Note : </b> Car Examples : BMW,Audi,Chrysler,Honda,Accord
+        </p>
+        <div class="demo">
+            <input ng-model="selectedCar" class="form-control" placeholder="Enter CAR Name" />
+            <input ng-model="selectedyear" class="form-control" placeholder="Enter Year"/>    </br>        
+            <select ng-model="state" >
+                <option value="new">New</option>
+                <option value="used">Used</option>
+                <option value="future">Future</option>
+            </select> </br>      
+            <button ng-click="getDetails()" >Get CAR Details</button> </br>
+        </div>
+        </br> </br>
+        <table class="table" id="tab1" style="display:none">
+            <thead>
+                <tr>
+                    <th>Model-Name</th>
+                    <th>Model-Series</th>                    
+                                     
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in car">
+                    <td>{{c.id}}</td>
+                    <td>{{c.name}}</td>                              
+                </tr>
+            </tbody>
+        </table>
+        <p id="displayMessage"></p>
+        <h4>About the Experiment</h4>
+        <p>
+            Application programming interface is API , Using API two programs can talk to each other . Send information , recive information from different programs.
+            In this experiment I have used Edmund API to talk and receive the information from application. I have used Angular JS and Edmund API to fetch data entered and
+            show details on the screen . Responce object from API is received in JSON format.
+
+        </p>
+        <h4> Code snippet in the script</h4>
+        <pre></br>
+                    $http.get(url).success(function (response) { </br>
+                        var carDetails = response.models; </br>
+                        }  </br>
+                </br>
+     </pre>
+        <p>
+            <b>Description</b></br>
+            After URL sends the request to Edmund client , response is received and results is fetched in JSON format.
+            $scope.car is required data to display item information on the screen.
+
+        </p>
+        <h4> Code snippet in the Div:</h4>
+        <pre>
+                        &lttr ng-repeat="c in car" &gt <br />
+                        &lttd&gt { {c.id} }&lt/td&gt <br/>
+                        &lttd&gt { {c.name} }&lt/td&gt    <br/>                         
+                            &lt/tr&gt <br/>                         
+       </pre>
+        <p>
+            <b>Description:</b>
+            Since Car has information , ng-repeat can be used to iterate and fetch data of search result.
+        </p>
+        <h4> URL Used : </h4>
+        <pre></br>
+    https://api.edmunds.com/api/vehicle/v2/car?state=selectedstate&year=selectedyear&view=basic&fmt=json </br>
+        </pre></br>
+        <b>Descripton:</b>
+         3 inputs to url will given by user through front end screen and car,selected state and selected year will be replaced in url
+          and information will be fetched.
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/api/CarDetailsAPI.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="http://developer.edmunds.com//" target="_blank">Edmunds Developer Site</a>
+        <hr />
+    </div>
+
+    <script>
+
+        var URL = "https://api.edmunds.com/api/vehicle/v2/car?state=selectedstate&year=selectedyear&view=basic&fmt=json&api_key=ea7qsju5c39uqr697b9vjg4x";
+        var headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+
+        function EbayClientController($scope, $http) {
+            $http.headers = headers;                       
+            $scope.getDetails = function () {
+              //  console.log($scope.selectedyear + "--" + $scope.selectedCar+ "--"+ $scope.state);
+                var selectedyear = $scope.selectedyear;
+                var car = $scope.selectedCar;
+                var state = $scope.state;
+                if (selectedyear == "" || car== "" || state == "")
+                {
+                    alert("Please enter all the fields");
+                    return false;
+                }
+                var url = URL.replace("selectedyear", selectedyear);           
+                url = url.replace("car", car);
+                url = url.replace("selectedstate", state);
+                console.log(url);
+                $http.get(url).success(function (response) {
+                    var carDetails = response.models;
+                    $scope.car = carDetails;
+                    if (carDetails[0] == null) {
+                        document.getElementById("tab1").style.display = "none";
+                        document.getElementById("displayMessage").innerHTML= "No Data Available Retry with another Car.";
+                    }
+                    else {
+                        document.getElementById("tab1").style.display = "";
+                        document.getElementById("displayMessage").innerHTML = "";
+                    }                    
+                    
+                });
+            }
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

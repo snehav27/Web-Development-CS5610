@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using NodeJS and JSON to Retrive Details from MongoDB</title>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 600px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+    <h1> Experiment 4 </h1>
+    <h2>Using NodeJS and JSON to Retrive Details from MongoDB </h2>
+    <br /> 
+    <p> Note : DB content may change according my future experiments .</p>
+    <div class="demo">
+        <a href="http://cs5610-sv27.rhcloud.com/getallcarreview"> Click Here to see the Responce</a>  </br></br>
+        <b> This is the sample Ouput :</b>
+        <img src="../../images/webImages/carReviewFromDB.png" alt="Node JS Output"> <br />
+        <b> MongoDB Entries :</b><br />
+        <img src="../../images/webImages/rockMongoEntires.png" height="600" width="600" border="0"  alt="Node JS Output"> <br />
+    </div>
+    <h4>About the Experiment</h4>
+    <p>
+        This Experiment is continuation of the <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/nodejs/SimpleNodeJS.html">Experiment1</a>,  
+        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/nodejs/JSON-NodeJS.html">Experiment2</a></br>
+        Same Steps should be followed as we have followed in experiment 1 and experiment 2. 
+        In this experiment we are using MongoDB (Is the database used to connect from Openshift) and         
+        Every application need to have database from which live content can be fetched from DB.
+        We can also use SQL instead of using MongoDB.
+        
+    </p>
+
+    <h4> Code Snippet</h4>
+
+    <pre>
+       
+            app.get('/getallcarreview', function (req, res) { </br>
+                    db.carreview.find(function (err, data) {</br>
+                    res.json(data);</br>
+                  });</br>
+             });</br>
+                   
+   </pre>
+    <b>Description :</b>
+    <p>
+
+        Above code snippet will send a json responce from MongoDB to the client who have accessed the link .4
+        Table Contains Details of car Review , when the /getallcarreview link is cliked it will fetch all of
+        the car review from carreview table and sends responce in JSON. <br />
+        1) find is the keyword used in the mongo db to fetch all the data <br />
+        2) findOne is the keyword used to fetch data for one parameter.<br />
+
+    </p>
+    <h4> Required Libraries: Code Snippet View:</h4>
+
+    <pre>
+var mongojs = require('mongojs'); </br>
+   </pre>
+    <b>Description :</b>
+    <p>
+
+       In this experiment we need mongojs  library other than express since we  are connecting to the mongodb.
+        to install mongodb in the local we need to give following command in the command promt:
+        <br />
+        <b> npm install mongodb</b>
+        Same should be commit to openshift git also we need to add MongoDB cartridge in the Openshift in order to use the MongoDB.
+
+    </p>
+
+
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/nodejs/CarReview-Json-Nodejs-MongoDB.html" target="_blank">View Source</a>
+    <hr />
+
+    <h2>References</h2>
+    <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+    <hr />
+
+    </br>
+    </br>
+    </div>
+</body>
+</html>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<html>
+
+<body>
+    <h1>DYNAMIC BUTTON CHANGES:</h1>
+    <b>TIME :</b><p id="time"> </p>
+    <button id="button1" type="button">Color Change!</button>
+    <button id="button2" type="button">Bold Button!</button>
+    <button id="button3" type="button">Italic Button!</button>
+    <button id="button4" type="button">Text Change Button!</button>
+    <button id="button5" type="button">Font Size Change Button!</button>
+    
+
+    <script>
+        var myVar = setInterval(function () { myTimer() }, 1000);
+
+        function myTimer() {
+            var d = new Date();
+            document.getElementById("time").innerHTML = d.toLocaleTimeString();
+          //  $("#button1").text('Changes');
+            //$("#button2").css('background-color', 'pink');
+           // $("#button3").css('font-weight', 'bold');
+          //  $("#button4").css('font-style', 'italic');
+          //  $("#button5").css('font-size', '160%');
+         
+            $.getJSON('http://cs5610-sv27.rhcloud.com/getoneincremental', function (data) {
+                //data is the JSON string
+                console.log(data);
+                if (data == null) {
+                    console.log("no changes found");
+                }
+                else {
+
+                    var elementid = "#".concat(data.elementid);
+                    var property = data.property;
+                    var updatedata = data.updatedata;
+                    var id = data._id;
+                    console.log(elementid);
+                    console.log(property);
+                    
+                    if (property == "text"){
+
+                        $(elementid).text(updatedata);
+                    }
+                    else if (property == "reload") {
+                        location.reload();
+                    }
+                    else{
+                        $(elementid).css(property, updatedata);
+                    }
+                var url = "http://cs5610-sv27.rhcloud.com/removeincremantalchangesById/enterid";
+                console.log(id);
+               url = url.replace("enterid", id);
+                console.log(url);
+                $.getJSON(url, function (data) {
+                    console.log(data);
+                });
+                }
+
+            });
+            
+            /*
+            $.ajax({
+                url: 'http://cs5610-sv27.rhcloud.com/getoneincremental',
+                dataType: 'jsonp',
+                success: function (json) {
+                    // Rates are in `json.rates`
+                    // Base currency (USD) is `json.base`
+                    // UNIX Timestamp when rates were collected is in `json.timestamp`        
+
+                    elementid = json.elementid;
+                    property = json.property;
+                    updatedata = json.updatedata;
+                    console.log(elementid + "" + property + "" + updatedata);
+                }
+            }); */
+        }
+    </script>
+
+
+
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿../../story/whatisnext.htm?../experiments/nodejs/story.txt		       What is Next?
+SimpleNodeJS.html			                                                 Simple NodeJS responce
+JSON-NodeJS.html                                                             JSON NodeJS responce
+StaticAngularJSContent.html                                                  Hosting Angular Content in OpenShift
+CarReview-Json-Nodejs-MongoDB.html                                           Fetching JSON reponce from MongoDB
+ManipulatingDataInMongoDB.html												 Creating and Removing DB entry in MongoDB.
+UpdatingMongoDBEntryFromNodejs.html										     Updating DB entry in MongoDB

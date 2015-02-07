@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Car Point</title>
+    <link rel="stylesheet" href="documentation.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="shortcut icon" href="images/documentation.png">
+    <script>
+
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                if (!$(this).hasClass("active")) {
+                    var tabNum = $(this).index();
+                    var nthChild = tabNum + 1;
+                    $("ul#tabs li.active").removeClass("active");
+                    $(this).addClass("active");
+                    $("ul#tab li.active").removeClass("active");
+                    $("ul#tab li:nth-child(" + nthChild + ")").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../FinalProject/images/CarPoint.png" />
+
+        </div>
+        <div id="body">
+            <br /><br />
+            <b> News Tab : </b> <br />
+            <strong>Note: This Page will only work when CORS is enabled. So please enable the CORS. I am facing this issue since I am not hitting the same domain URL.</strong>
+            <p>
+                This page is listed with news created by admin in the site. 
+                Whatever admin has edited and saved in his editorial page will be listed in this page. 
+                Admin is also having delete editorial page where only he is entitled to delete any article. <br />          
+
+            <br />
+            <p>
+                <b> Base Technologies used:</b> <br />
+
+                1) Angular JS <br />
+                2) Node JS<br />
+                <br />
+                <b> Responsive:</b> <br />
+                 Bootstrap Used for this particular section.
+                <br />
+                <br />
+                <b>  DB: </b> <br />
+                Mongo DB. Hosted in open shift. <br />
+                <b> TABLE NAME :</b> newsedit
+                     </p>
+
+            <b>  News Tab is based on 4 sections in this project:</b><br />
+            1) Editorial page for admin.<br />
+            2) Delete Page for admin.<br />
+            3) News page for the user.<br />
+            4) Article page for the user.<br /> <br />
+
+            <b>Flow Diagram</b>
+            <img src="images/newstab.png" />
+            </p>
+            <ul id="tabs">
+                <li class="active">Editorial page </li>
+                <li>News Delete Page </li>
+                <li>News Page For User</li>
+                <li>News Article For User</li>              
+            </ul>
+            <ul id="tab">
+                <li class="active">
+                    <p>
+                        <b>
+                            Explanation
+                        </b>
+                       
+                        Admin only has access to the editorial page. Admin will be able to create an editorial page 
+                        using drag and drop operations and saving the page. Once the page is saved an url string is 
+                        sent to insert into Mongo DB.
+
+                    </p>
+                    <p>
+                        <b>Access to the page</b> <br />
+                     
+                            <img src="images/editorial1.png" /> 
+                            <br />
+</p>
+                    <p>Only admin will have access to the editorial page. Before going into this page we need to login as admin. </p>
+                    <b>Admin input</b> <br />
+                    <p>
+                        <img src="images/editorial2.png" /> <br />
+
+                        Admin will have 4 option to create an editorial page. <br />
+                        1)	Heading 1.<br />
+                        2)	Div Section<br />
+                        3)	Image IMG. <br />
+                        4)	YouTube iframe.<br />
+
+                        <b>  Explanation:</b>
+                        On click of the add button, admin will be able to add the dom element to the screen and postion on to the screen.<br />
+                        On click of the Save button the data is sent to mongo DB to save in the data base using URL query strings.<br />
+                        On click of the reload the page is refreshed and all the elements in page removed.<br />
+
+                    </p>
+                    <b>Creating News Example:</b>
+                    <p>User enters all the information to create news .</p>
+                    <img src="images/editorial3.png" /> <br />
+                    <p>On click on the save button URL sent after:</p>
+                    <img src="images/editorial4.png" /> <br />
+                    <p>On click on the save button URL sent after:</p>
+                    <img src="images/editorial5.png" /> <br />
+                    <p>Url query string is fetched and inserted into Mongo DB hosted in Open shift. Following is the format in which data is saved:</p>
+                    <img src="images/editorial6.png" /> <br />
+                    <p>
+                        For more technical details go to the following experiments: - ><br />
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/CreateandDragJS.html">CLICK HERE for Drag and delete experiment</a>  <br />
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/nodejs/ManipulatingDataInMongoDB.html">CLICK HERE For Mongo DB experiment</a>
+                    </p>
+                    <b>Source:</b> <br />
+                    Node JS code in Open Shift : <br />
+                    <img src="images/editorial.png" /> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/newsEditorAdmin/NewsEditorAdmin.html">HTML Code</a>  <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/newsEditorAdmin/js/app.js">JavaScript</a>
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> Admin only has access to the editorial page. Admin will be able to create an editorial page using drag and drop operations and saving the page. Once the page is saved an url string is sent to insert into Mongo DB.</p>
+                    <b> Access to this page:</b> <br />
+
+                    <img src="images/delete2.png" /> <br />
+                    <p>Only admin will have access to the delete page. Before going into this page we need to login as admin.</p>
+                    <b>View page of the admin to delete:</b>
+                    <img src="images/delete3.png" /> <br />
+                    <p> On click of the delete button news article will be deleted</p>
+                    
+                    <p>
+                        For more technical details go to the experiment: - >  <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/NewsDeletePage.html">CLICK HERE </a>  <br />
+                    </p>
+                   
+                    <b>Source Code </b>
+                    Node JS code in Open Shift : <br />
+                    <img src="images/delete.png" /> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/newsEditorAdmin/RemoveNewsArticles.html">HTML Code</a>  <br />
+                  
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> All the news that are saved by admin are shown in the news page of the user.</p>
+                    <b>Access to the page</b> <br />
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/newsEditorAdmin/NewsPage.html">
+                        <img src="images/news.png" />
+                        </a> <br />
+                        <b> News listing page:</b> <br />
+                        <img src="images/newpage.png" /> <br />
+                        <p>Every news which is created by admin is listed in this page. On click on the article, page will be opened showing the article information that was created by admin. on load of this page mongo DB unique id is associated with each article heading to fetch the information from Mongo DB when a particular article is selected .</p>
+
+                        <p>
+                            For more technical details go to the experiment: - >  <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/FetchingFromMongoDB.html">CLICK HERE For News Page.Experiment</a>  <br />
+                        </p>
+
+                        <b>Source Code </b>
+                        Node JS code in Open Shift : <br />
+                        <img src="images/newpage2.png" /> <br />
+                        <a href="../../fileview/Default.aspx?~/experiments/FinalProject/newsEditorAdmin/NewsPage.html">HTML Code</a>  <br />
+</li>
+                <li>
+                    <b>Explanation</b>
+                    <p> Article page of the user will be shown on click of the article name, every article is associated with the id, when user clicks on the article the id is sent with URL and with ID again we fetch data using node.js and mongo db hosted in open shift:</p>
+                    <b> Access to this page:</b> <br />
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/newsEditorAdmin/NewsPage.html">
+                        <img src="images/news.png" /> <br />
+                    </a>
+                    <b>View page of the article</b> <br />
+                    <img src="images/article.png" /> <br />
+                   <p> In the above image url contains ID , This id is sent to openshift to fetch details as JSON responce. Below code is shown which is inserted in Node.js</p>
+                    <p>
+                        For more technical details go to the experiment: - >  <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated2/FetchingFromMongoDB.html">CLICK HERE For News Page.Experiment</a>  <br />
+                    </p>
+                   
+                    <b>Source Code </b>
+                    Node JS code in Open Shift : <br />
+                    <img src="images/article2.png" /> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/newsEditorAdmin/newsarticle.html">HTML Code</a>  <br />
+
+                </li>
+             
+            </ul>
+        </div>
+
+
+        <center>
+            <div id="footer"> 2014 Copyright © Sneha Vankireddy</div>
+        </center>
+    </div>
+</body>
+</html>

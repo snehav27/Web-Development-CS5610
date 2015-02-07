@@ -1,0 +1,8 @@
+﻿../../story/whatisnext.htm?../experiments/FinalProject/story.txt		       What is Next?
+FrontPage.html														       Project HomePage
+../../story/index.htm?../experiments/Documentation/story.txt												   Documentation
+https://www.youtube.com/watch?v=-qBkYpZoM30									Youtube Video About my project								
+
+
+
+

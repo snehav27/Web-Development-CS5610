@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/angular/story.txt		           What is Next?
+TableContent.html			                                               Table Content
+Calculator.html			                                                   Simple Calculator
+ImagesSlide.html                                                           ImageSlide

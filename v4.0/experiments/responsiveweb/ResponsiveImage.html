@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Web Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0" />
+    <style>
+
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            list-style: none;
+            margin: 0.5em 0;
+            padding: 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        .onTopOfEachOther {
+            position: relative;
+            top: 1px;
+            left: -3px;
+        }
+
+            .onTopOfEachOther span {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+        pre, code {
+            direction: ltr;
+           
+            text-align: justify;
+        }
+
+        pre {
+            font-size: 0.8em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        code {
+            font-size: 0.9em;
+            line-height: 0.9em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            background: #EEEEEE;
+        }
+
+        #rspImage {
+            margin: 0px auto;
+            float: none;
+            border: 5px solid white;
+            width: 720px;
+        }
+
+        @media screen and (max-width: 900px) {
+            #rspImage {
+                width: 450px;
+            }
+        }
+
+        @media screen and (max-width: 820px) {
+            #rspImage {
+                width: 400px;
+            }
+        }
+
+        @media screen and (max-width: 740px) {
+            #rspImage {
+                width: 370px;
+            }
+        }
+
+        @media screen and (max-width: 620px) {
+            #rspImage {
+                width: 340px;
+            }
+        }
+
+        @media screen and (max-width: 520px) {
+            #rspImage {
+                width: 310px;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            #rspImage {
+                width: 280px;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            #rspImage {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body class="main-wrapper" id="centered">
+    <div class="    main-wrapper">
+        <h2> Responsive Image</h2>
+        <img id="rspImage" src="../../images/webImages/flowers.jpg" title="Flowers In Boston" />
+
+
+        <hr />
+        <div>
+
+            <p>This experiment is to know about Resposive image and how @media screen is used </p>
+
+            <p>
+                I have took an image of flowers in boston which is clicked by me :) , to demonstrate responsive image.
+        </div>
+
+        <h4>Code snippet example for Responsive Image</h4>
+        <pre>
+          
+        @media screen and (max-width: 920px) {
+            #image1 {
+                width: 430px;
+            }
+        }
+      
+            </pre>
+        </p>
+
+        max-width : (here pixels are increased according to the screen size of the device)
+        width     : Pixels of the image  to be shown according to the max-width
+
+        By creating a resposive images we will be able shrink the image according to the screen size  .
+        So Resposive image can be viewed on any type of the devices.
+
+
+    </div>
+    <h4>Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/experiments/responsiveweb/ResponsiveImage.html" target="_blank">View Source</a>
+
+    <hr />
+
+    <h4>References</h4>
+    <a href="http://net4.ccs.neu.edu/home/sand89/" target="_blank">Sandeep NEU Website</a>
+
+    <hr />
+
+    </br>
+    </br>
+
+</body>
+</html>

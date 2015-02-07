@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/database/story.txt		       What is Next?
+Database.aspx			                                              Database SQL operations 
+DropDownFromDB.aspx			                                          Drop Down values from DB.
+SearchingFromDB.aspx												  Select Crude operation.

@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Google Map API</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">   
+    <meta name="author" content="Sneha Vankireddy">
+
+    <style>
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+
+        a:link {
+            color: blue;
+        }
+
+        a:visited {
+            color: blue;
+        }
+
+        a:hover {
+            color: blue;
+        }
+
+        a:active {
+            color: blue;
+        }
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        /*CSS Code for Google Maps*/
+        #map-canvas {
+            height: 40%;
+            width: 90%;
+            margin: 2px;
+            padding: 2%;
+        }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"> </script>
+
+    <script type="text/javascript">
+
+        var map;
+        var service;
+
+        function handleSearchResults(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                var carserviceIcon = "../../images/webImages/carservice.png";
+                for (var i = 0; i < results.length; i++) {
+
+                    var marker = new google.maps.Marker({
+                        position: results[i].geometry.location,
+                        Map: map,
+                        animation: google.maps.Animation.DROP,
+                        icon: carserviceIcon,
+                    });
+
+                }
+            }
+        }
+
+
+        function performSearch() {
+
+            var request = {
+                bounds: map.getBounds(),
+                name: "parking",
+            };
+            service.nearbySearch(request, handleSearchResults);
+
+        }
+
+        function initialize(location) {
+
+            var currentLocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+            var mapOptions = {
+                center: currentLocation,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+
+            var infowindow = new google.maps.InfoWindow();
+            var customizedIcon = "../../images/webImages/currentlocation.png";
+
+            var yourPlaceMarker = new google.maps.Marker({
+                position: currentLocation,
+                map: map,
+                title: "You Are Here!",
+                animation: google.maps.Animation.DROP,
+                icon: customizedIcon
+            });
+
+            google.maps.event.addListener(yourPlaceMarker, 'click', function () {
+                infowindow.setContent(this.title);
+                infowindow.open(map, this);
+
+                if (yourPlaceMarker.getAnimation() != null) { yourPlaceMarker.setAnimation(null); }
+                else { yourPlaceMarker.setAnimation(google.maps.Animation.BOUNCE); }
+
+            });
+
+            service = new google.maps.places.PlacesService(map);
+            google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);
+
+        }
+
+        $(document).ready(function () {
+
+            navigator.geolocation.getCurrentPosition(initialize);
+
+        });
+
+    </script>
+</head>
+<body class="main-wrapper" id="centered">
+    <h1>Experiment : Google Maps API</h1>
+    <hr />
+
+    <h2>Google Maps API - Car Parking Locator</h2>
+    <div id="map-canvas">
+    </div>
+
+    <hr />
+
+    <div class="main-wrapper">
+
+        <hr />
+        <h4> About the experiment :</h4>
+        <p>Google Maps has a wide array of APIs that let you embed the robust functionality and everyday usefulness of Google Maps into your own website.
+            he Google Maps APIs give developers several ways of embedding Google Maps into web pages, and allows for either simple use or extensive customization.
+        In this experiment I have used google map API to get nearby parking information of the CAR. So when users check the map they can be easily find the
+        parking area nearby.User can see these locations available and will be able to choose nearest parking space.
+        . </p>
+        <h4>CSS and View Code </h4>
+        <pre>
+            &lt;div id="map-canvas"&gt;<br />
+                         &lt;/div&gt;
+
+         </pre>
+        <pre>
+            #map-canvas { <br />
+            height: 40%; <br />
+            width: 90%;<br />
+            margin: 2px;<br />
+            padding: 2%;<br />
+        }<br />
+        </pre>
+        <b> Description :</b>
+        <p> Here div id is given as map-canvas and given results will be shown in the div. In CSS height, width of the div where the map is displyed is 
+        declared.</p>
+        <h4> JavaScript Code:</h4>
+       
+        <pre>
+              $(document).ready(function () {<br />
+            navigator.geolocation.getCurrentPosition(initialize);<br />
+        });<br />
+</pre> 
+        <b>Description:</b>
+        <p>when page is reloaded jquery document.ready function will be called , and navigator.geolocation.getcurrentposition will fetch the current 
+        location of the user and intialize method will be called. (check below for continuation description).</p>
+        <pre>
+             function initialize(location) {<br />
+            var currentLocation = new google.maps.LatLng(location.coords.latitude,
+                                     location.coords.longitude);<br />
+            var mapOptions = {<br />
+                center: currentLocation,<br />
+                zoom: 14,<br />
+                mapTypeId: google.maps.MapTypeId.ROADMAP<br />
+            }<br />
+            map = new google.maps.Map(document.getElementById("map-canvas"),<br />
+                mapOptions);<br />
+            var infowindow = new google.maps.InfoWindow();<br />
+            var customizedIcon = "currentlocation.png";<br />
+            var yourPlaceMarker = new google.maps.Marker({<br />
+                position: currentLocation,<br />
+                map: map,<br />
+                title: "You Are Here!",<br />
+                animation: google.maps.Animation.DROP,<br />
+                icon: customizedIcon<br />
+            });<br />
+            google.maps.event.addListener(yourPlaceMarker, 'click', function () {<br />
+                infowindow.setContent(this.title);<br />
+                infowindow.open(map, this);<br />
+                if (yourPlaceMarker.getAnimation() != null) { yourPlaceMarker.setAnimation(null); }<br />
+                else { yourPlaceMarker.setAnimation(google.maps.Animation.BOUNCE); }<br />
+            });<br />
+            service = new google.maps.places.PlacesService(map);<br />
+            google.maps.event.addListenerOnce(map, "bounds_changed", performSearch);<br />
+        }<br />     
+        </pre>
+        <b>Description:</b>
+        <p>Current location is fetched of the user and I have used customized icon to show my current location in the map.
+        Also after fetching the current location , properties are set in the map like position , title , icon to indicate the current location
+        and which animation to be displayed when icon is showed on the screen for the current location.
+            . After animating the current location , addListenerOnce is used to call performSearch() function (check below for continuation description).
+</p>
+        <pre>
+            function performSearch() { <br />
+            var request = {<br />
+                bounds: map.getBounds(),<br />
+                name: "parking",<br />
+            };<br />
+            service.nearbySearch(request, handleSearchResults);<br />
+        }    <br />
+        </pre>
+        <b> Description :</b>
+        <p> this method will check if there is any parking area nearby inside the map boundaries displayed on the screen. And will send the results 
+        to another methof handleSearchResults. </p>
+        <pre>
+               function handleSearchResults(results, status) {<br />
+            if (status == google.maps.places.PlacesServiceStatus.OK) {<br />
+                var carserviceIcon = "carservice.png";<br />
+                for (var i = 0; i < results.length; i++) {<br />
+                    var marker = new google.maps.Marker({<br />
+                        position: results[i].geometry.location,<br />
+                        Map: map,<br />
+                        animation: google.maps.Animation.DROP,<br />
+                        icon: carserviceIcon,<br />
+                    });<br />
+                }<br />
+            }<br />
+        }<br />
+
+        </pre>
+        <b> Description :</b>
+        <p> In the above code snippet , results are marked on the map according geo location received and 
+        properties like animation and icons  are set.</p>
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/api/CarParking.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="https://developers.google.com/maps/" target="_blank">Google Maps Developer</a>
+        <hr />
+        <br /><br />
+    </div>
+</body>
+
+
+
+</html><br />

@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Login Page With Validation</title>
+    <style type="text/css" media="screen">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        .onTopOfEachOther {
+            position: relative;
+            top: 1px;
+            left: -3px;
+        }
+
+            .onTopOfEachOther span {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+        pre, code {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+        code {
+            font-size: 0.9em;
+            line-height: 0.9em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            background: #EEEEEE;
+        }
+    </style>
+    <script>
+        function validate() {
+            var userName = document.getElementById("username").value;
+            var password = document.getElementById("password").value
+
+            if ((userName == "" || userName == null) && (password == "" || password == null)) {
+                alert("Please enter both User Name and Password");
+            }
+            else {
+                if (userName != "admin" && password != "admin") {
+                    document.getElementById("message").innerHTML = "Wrong Password and User Name!!!";
+                    document.getElementById("message").style.color = "red";
+                }
+                else{
+
+                //In final project here logic will be written to navigate to next page
+                    document.getElementById("loginTable").style.display = "none";
+                    document.getElementById("message").innerHTML = "You have been successfully logged in";
+                    document.getElementById("message").style.color = "green";
+                }
+            }
+
+
+
+        }
+    </script>
+</head>
+<body class="main-wrapper" id="centered">
+    <form id="form1">
+        <div class="main-wrapper" id="centered">
+            <div>
+                <h1> Experiment 1 </h1>
+                <h2>Login Page With Validations JavaScript</h2>
+                <div class="demo" id="loginTable">
+                    <table>
+                        <thead> User Login </thead>
+                        <tfoot>
+                            <tr>
+                                <td> User Name</td>
+                                <td>
+                                    <input type="text" id="username" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password
+                                </td>
+                                <td>
+                                    <input type="password" id="password" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="button" value="Login" onclick="validate()" /></td>
+                                <td><input type="reset" value="Reset" /></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p id="message"></p>
+            </div>
+    </form>
+    </br>
+    <h4>Conditions :</h4>
+    <p>
+        1) If you use username and password as <b>admin</b> success message will be displayed. </br>
+        2) If you use different username and password failure message will be displayed. </br>
+        3) If you dnt enter user name and password alert message will pop up indicating to enter the details.
+    </p>
+    <h4> About the Experiment :</h4>
+    <p>
+        <b>Login Page : </b>I have created  login experiment to validate username and password enetered by user through java script .
+        When we create website a login page must be ther specific user realted data will be shown on the screen.
+        It became mandatory for most of the website to have a login page.
+        This Login page condition will be used in my future project where validation of both user name and password will be used .
+    </p>
+
+
+    <h4> Code Snippet Body:</h4>
+    <pre>if ((userName == "" || userName == null) && (password == "" || password == null)) { <br />
+                alert("Please enter both User Name and Password"); </br>
+            }</br>
+            else {</br>
+                if (userName != "admin" && password != "admin") {</br>
+                    document.getElementById("message").innerHTML = "Wrong Password and User Name!!!";</br>
+                    document.getElementById("message").style.color = "red";</br>
+                }</br>
+                else{</br>                
+                    document.getElementById("loginTable").style.display = "none";</br>
+                    document.getElementById("message").innerHTML = "You have been successfully logged in";</br>
+                    document.getElementById("message").style.color = "green";</br>
+                }</pre>
+    <p>
+        <b>Code Snippet Description :</b>
+        Here 1st check condition is done to see if password and username is not empty or null and if condition passes alert message will be shown.
+        If both password and user name are given then it will check if they are equal to <b>admin</b> . If password and admin are equal to admin .
+        Success message will be shown on the screen hiding login screen else will show failure message.
+
+    </p>
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/javascript/LoginPage.html" target="_blank">View Source</a>
+
+    <hr />
+
+    <h2>References</h2>
+    <a href="http://www.w3schools.com/" target="_blank">W3Schools</a>
+
+    <hr />
+
+    </br>
+    </br>
+    </div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+    <h1> Experiment 1 </h1>
+    <h2>Simple Node.js Responce</h2>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>   
+    <br /> <br />
+    <div class="demo"> 
+        <a href="http://cs5610-sv27.rhcloud.com/content"> Click Here to see the Output</a>  </br></br>
+        <img src="../../images/webImages/simpleNodeJS.png" alt="Node JS Output">
+    </div>
+    <h4>About the Experiment</h4>
+    <p>
+        Node.js is the cross-platform runtime envirnment for server-side and networking application .</br>
+        In this experiment I have just returned simple text after following steps : </br>
+        1) Need to register in Open Shift . </br>
+        2) Create an node.js application.</br>
+        3) To run in my local I need to install node.js,express , git rhc .       </br>
+    </p>
+
+    <h4> Simple Node.js : Code Snippet View:</h4>
+
+    <pre>
+                   
+app.get('/content', function (req, res) { </br>
+    res.send('hello Sneha How Are you'); </br>
+});
+
+   </pre>
+    <b>Description :</b>
+    <p>
+
+        Above code snippet will send a simple responce to the client who have accessed the link. <br />
+        1) app.get is supported http method in node.js ,app.get will send responce to the client .<br />
+        2)When a server hits <b>http://cs5610-sv27.rhcloud.com/content</b> link it will search for /content in js
+        according to the content in the method , js will send responce.<br />
+    </p>
+    <h4> Required Libraries: Code Snippet View:</h4>
+
+    <pre>
+
+var express = require('express'); </br>
+var app = express ; </br>
+
+   </pre>
+    <b>Description :</b>
+    <p>
+       
+        Express is the framwork used here which is declared as required, <b>require('express')</b> will import the require library
+        to run the application using Express framework  .
+
+    </p>
+    
+
+    <h2>Source Code</h2>
+    <a href="../../fileview/Default.aspx?~/experiments/nodejs/SimpleNodeJS.html" target="_blank">View Source</a>
+    <hr />
+
+    <h2>References</h2>
+    <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+    <hr />
+
+    </br>
+    </br>
+    </div>
+</body>
+</html>
+
+
+</body>
+</html>

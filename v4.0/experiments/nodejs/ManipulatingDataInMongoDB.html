@@ -1,0 +1,264 @@
+﻿    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <style type="text/css">
+            .main-wrapper {
+                height: 80%;
+                width: 96%;
+                padding: 2%;
+            }
+
+            .demo {
+                border: 2px solid #a1a1a1;
+                padding: 10px 40px;
+                background: #dddddd;
+                width: 300px;
+                border-radius: 25px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            div {
+            }
+
+            h2 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 1.1em;
+                padding: 0.5em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            h4 {
+                background-color: lightpink;
+                color: #808080;
+                font-size: 0.9em;
+                padding: 0.3em;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            ul.master_navigation {
+                font-size: 100%;
+                font-weight: bold;
+                text-align: center;
+                padding: 0;
+                list-style: none;
+                margin: 0.5em 0;
+                /*background: #FF0066*/
+            }
+
+                ul.master_navigation li {
+                    display: inline-block;
+                    padding: 0 0.5%;
+                }
+
+            a {
+                color: #08f;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+                a:visited {
+                    color: #88f;
+                }
+
+                a:hover {
+                    color: #88f;
+                }
+
+            p {
+                text-align: justify;
+            }
+
+            #centered {
+                width: 800px;
+                text-align: left;
+                border: 0px;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            body {
+                width: 900px;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                background: #DBDBDD;
+            }
+
+            .pad {
+                padding: 10px;
+            }
+
+            pre {
+                direction: ltr;
+                text-align: left;
+            }
+
+            pre {
+                font-size: 0.77em;
+                line-height: 0.8em;
+                font-family: Courier, "Courier New", mono;
+                color: #000000;
+                margin: 4px;
+                padding: 4px;
+                border: solid 1px #808080;
+                background: #c3dff8;
+            }
+
+
+            .headRow {
+                display: table-header-group;
+                width: auto;
+            }
+
+
+            .divTable {
+                display: table;
+                width: auto;
+                background-color: #eee;
+                border: 1px solid #666666;
+                border-spacing: 5px;
+            }
+
+            .divRow {
+                display: table-row;
+                width: auto;
+            }
+
+            .divCell {
+                float: left; /*fix for  buggy browsers*/
+                display: table-column;
+                width: 200px;
+                background-color: #ccc;
+            }
+        </style>
+    </head>
+    <body ng-app="" class="main-wrapper" id="centered">
+        <h1> Experiment 5 </h1>
+        <h2>Using NodeJS to Manipulate data in MongoDB</h2>
+        <br /> <br />
+           <b> To Insert Into DB Please Click here</b>
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/entrycarreviewinDB?user=Jhon&carname=Honda&review=I have bought this car recently and there was a problem in dashboard , but fixed within no time">
+                entrycarreviewinDB?user=Jhon&carname=Honda&review=I have bought this car recently and there was a problem in dashboard , but fixed within no time</a>  </br></br>           
+        </div>
+        <br />
+        <b> To Delete From DB Please Click here</b>
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/removeReviewByName/Jhon">
+                removeReviewByName/Jhon
+            </a>  
+        </div>
+        </br></br>
+        <b> To See All the content  In DB in JSON format</b>
+        <div class="demo">
+            <a href="http://cs5610-sv27.rhcloud.com/getallcarreview">
+                /getallcarreview
+            </a>  </br></br>
+        </div>
+        <h4>About the Experiment</h4>
+        <p>
+         In this experiment I have shown following operations: </br>
+            1) To add entry in mongodb database by passing querystring from URL.</br>
+            2) To delete entry in mongodb database by passing querystring from URL</br>
+            In this case there will two functions where one function will be used to add entries into database and other to 
+            delete from databas.</br>
+        </p>
+
+        <h4> Code Snippet For Entry into DB through Node.js:</h4>
+
+        <pre>                   
+            app.get('/entrycarreviewinDB', function (req, res) {</br>
+            var carreview = {</br>
+                user: req.query.user,</br>
+                carname: req.query.carname,</br>
+                review: req.query.review </br>          
+            };</br>
+            db.carreview.insert(carreview, function (err, data) {            </br>
+                res.json(data);</br>
+            });</br>
+        });</br>
+       </pre>
+        <b>Description :</b>
+        <p>
+
+            Above code snippet will add an entry into Database according to the url String passed.<br />
+            For Example :<br />
+            <pre>
+
+           URL LINK + /entrycarreviewinDB?user=Jhon&carname=Honda&review=I have bought this car recently <br/>
+            and there was a problem in dashboard , but fixed within no time
+            </pre> </br>
+            In the above link /entrycarreviewinDB is called and internally it will check for user , carname and review
+            in url parameters using <b> req.query.parameter </b>, It will fetch user , carname and review from url query string and insert into DB .
+            db.carreview.insert command will insert data into db.</br>
+            Null case condition : </br>
+            All the parameter of  Carreview table in MongoDB allows null, so if user doesnt enter any information in the URL query string 
+            that will allow data to be inserted into DB.<br /><br />
+            For better understanding in SQL  :
+            <pre> 
+            insert into carreview(user,carname,review) <br />
+                VALUES("Jhon","Honda","I have bought this car recently and there was a<br />
+                                         problem in dashboard , but fixed within no time")
+    </pre>
+
+        </p>
+        <h4> Code Snippet For Delete Data from DB: through Node.js</h4>
+
+        <pre>
+            app.get('/removeReviewByName/:user', function (req, res) {</br>
+            var name = req.params.user;</br>
+            db.carreview.remove</br>
+                user:name</br>
+            },false, function (err, doc) {</br>
+                res.json(doc);</br>
+            });</br>
+        });</br>
+       </pre>
+        <b>Description :</b>
+        <p>
+
+            Above code snippet will delete an entry from Database according to the url String passed.<br />
+            For Example :<br />
+            <pre>
+
+           URL LINK + /removeReviewByName/sneha
+            </pre> </br>
+            In the above link /removeReviewByName is called and internally it will check for user name 
+            in url parameters using <b> req.query.user </b>, It will delete the data from DB according user given user name
+             from url. So in the example <b>sneha</b> is the query string , so on click of the url it will delete the records 
+            having sneha as user.
+            db.carreview.remove command will remove data from db.
+           In the above case: <b>user:name</b> is the where condition .
+            <br /><br />
+            For better understanding in SQL  :
+            <pre> 
+            delete from  carreview where user = "sneha"
+
+    </pre>
+        </p>
+
+
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/nodejs/ManipulatingDataInMongoDB.html" target="_blank">View Source</a>
+        <hr />
+
+        <h2>References</h2>
+        <a href="https://www.youtube.com/user/jannunzi" target="_blank">Professor Jose YouTube Channel</a> </br>
+        <hr />
+
+        </br>
+        </br>
+        </div>
+    </body>
+    </html>
+
+
+    </body>
+    </html>

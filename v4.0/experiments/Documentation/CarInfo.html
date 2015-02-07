@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Car Point</title>
+    <link rel="stylesheet" href="documentation.css" />
+    <link rel="shortcut icon" href="images/documentation.png">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                if (!$(this).hasClass("active")) {
+                    var tabNum = $(this).index();
+                    var nthChild = tabNum + 1;
+                    $("ul#tabs li.active").removeClass("active");
+                    $(this).addClass("active");
+                    $("ul#tab li.active").removeClass("active");
+                    $("ul#tab li:nth-child(" + nthChild + ")").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="../FinalProject/images/CarPoint.png" />
+
+        </div>
+        <div id="body">
+            <br /><br />
+            <b> Car Info Exaplanation : </b> <br />
+
+            <p>
+                This page allows user to fetch information about the cars from edmunds API . <br />
+                <br />
+                
+                <br />
+                <b> Base Technologies used:</b> <br />
+
+                1) Angular JS <br />
+                2) ASPX (to fetch data from the DB for dropdowns)<br />
+                3) JSON format<br /> <br />
+
+                <b> Responsive:</b> <br />
+                Fully Responsive , no Bootstrap Used.
+                <br />
+                <br />
+                <b>  Table: </b> <a href="database.aspx?cs=ProductionSQLConnectionString&db=snehav27.CAR_STYLE_INFO">snehav27.CAR_STYLE_INFO.</a><br />
+                <br /><b>Class Diagram :</b> <br />
+                <img src="images/CarInfoClassDiagram.png" />
+
+
+                <br />
+            </p>
+            <ul id="tabs">
+                <li class="active">Car Series</li>
+                <li>Car Images</li>
+                <li>Dealers Info</li>
+                <li>Price Info</li>
+                <li>Equipments</li>
+                <li>Car Reviews</li>
+            </ul>
+            <ul id="tab">
+                <li class="active">
+                    <b>Explanation</b>
+                    <p> Every manufacturer will release number of models and series . This tab gives information models and series of a particular manufacturer.</p>
+                    <b> Access to this page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/CarSeries.aspx">   <img src="images/carseries.png" width="200" height="102" /> <br /> </a>
+
+                    <b> User Inputs:</b><br />
+
+                    <img src="images/carseries1.png" />
+
+
+
+                    <p>
+                        Car Input, Year and vehicle type weather it’s new, used or future. According to user   input car series information is fetched.
+                    </p>
+
+                    <b>Sample Output:</b><br />
+
+
+                    <img src="images/carseries2.png" /> <br />
+                    <img src="images/carseries3.png" />
+
+
+                    <p>See this Experiment for more technical information - >  <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/api/CarDetailsAPI.html">CLICK HERE</a> </p>
+
+                    <b>Source Code </b>   
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/CarSeries.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> User will always love to see pics of the car and select a car . This tab will give images of car that are listed.</p>
+                    <b>Access to this page:</b> <br />
+                    
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/CarImages.aspx">   <img src="images/carimages.png" width="200" height="70" /> <br /> </a>
+
+                    <b>    User Inputs:</b> <br />
+                    <img src="images/carimages1.png" /> <br />
+                    <p>
+                        In this page User inputs are fetched from DB. Every car is associated with style ID.  <br />
+                        Since user doesn’t know
+                        Style ID information, records are fetched from DB and according to
+                        Selected Car Name, year is fetched and according to car and year selection Car Model is fetched.
+                        Car model name will provide style if of that particular car.
+                    </p>
+                    <b>  Output Sample:</b> <br />
+
+
+                    <img src="images/carimages2.png" /> <br />
+                    <img src="images/carimages3.png" /> <br />
+
+                    <p>   See this Experiment for more technical information - > <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/CarImages.aspx">CLICK HERE</a></p>
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/CarImages.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/CarImages.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfoDAO.cs" target="_blank"> DAO </a> <br />                    
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p> After selection of the car user will like to search for a dealer and buy a car. This tab will provide information of the dealer
+                    nearby </p>
+
+
+                    <b>  Access to the Page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/DealersInfo.aspx">   <img src="images/dealers.png" width="200" height="70" /> <br /> </a>
+                    <b>User Inputs:</b><br />
+
+                    <img src="images/dealers1.png"> <br />
+                    
+                    <p>User will be giving zip code to search nearby dealers who sell cars</p>
+                    <b>    Output Sample:</b><br />
+                    <img src="images/dealers2.png"> <br />
+                    <img src="images/dealers3.png"> <br />
+                    <p>
+                        User will be able to fetch all the details of a particular about the dealers nearby: <br />
+                        Company Name <br />
+                        Address information<br />
+                        Map Information: (on click on the map icon user will be able to see google map indicating the position of the dealer)<br />
+                        Ouput: <br />
+                        <img src="images/dealersMap.png"> <br />
+                        Dealer Website: on click user will be redirected to the dealer’s website.<br />
+                        Phone Number.<br />
+                        Open at:  will fetch information from Wednesday to Sunday.<br />
+                        Ratings: Rating of the dealers.<br />
+                    </p>
+                    See this Experiment for more technical information - > <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/DealerInformation.html"> CLICK HERE</a>
+
+                    <br />
+
+                    <b>Source Code </b>
+                    <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/DealersInfo.aspx" target="_blank"> HTML </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+
+                </li>
+                <li>
+
+
+                    <b>Explanation</b>
+                    <p>
+                        User will like to know if price of the car will fit into the budget .This tab will give information of the cars price.
+                    </p>
+                    <b>
+                        Access to the page:
+                    </b> <br />
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/PriceInfo.aspx">   <img src="images/priceinfo.png" width="200" height="70" /> <br /> </a>
+
+                    <b>
+                        User Inputs:
+                    </b> <br />
+                    <img src="images/priceinfo1.png">
+                    <p>
+                        User should select the prepopulated drop downs from database (i.e. car name, year and car model) and enter zip code to fetch the price information.
+                    </p>
+                    <b>
+                        Output Sample:
+                    </b><br />
+                    <img src="images/priceinfo2.png"> <br />
+                    
+                    <b>Output:</b><br />
+                    <img src="images/priceinfo3.png" /><br />
+                    <p>
+                        See this experiment for more technical information -> <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/CarPrices.aspx"> CLICK HERE</a>
+                    </p>
+                    <br />
+
+                    <b>Source Code </b><br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/PriceInfo.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/PriceInfo.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+
+
+
+                </li>
+                <li>
+                    <b>Explanation</b>
+                    <p>
+                        Every car have equipments like audio system, seat types and tires etc.This tab will give information of the equipments inside the car.
+                    </p>
+                    <b>Access to the page:</b> <br />
+
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/EquipmentInfo.aspx">   <img src="images/equipments.png" width="200" height="70" /> <br /> </a>
+                    <b>User Inputs:</b><br />
+
+                    <img src="images/equipments1.png">
+                    <p>
+                        User should select the prepopulated drop downs from data base (i.e. car name, year and car model) and equipment type to fetch the equipment information.
+                    </p>
+                    <b>
+                        Output Sample:
+                        
+                    </b><br />
+                    <img src="images/equipments2.png"> <br />
+                    <b>
+                        Output:
+                    </b><br />
+                    <img src="images/equipments3.png">
+                    <p>
+                        See this Experiment for more technical information - > <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/CarEquipmentDetails.aspx"> CLICK HERE</a>
+                    </p>
+                    <br />
+                    <b>Source Code </b><br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/EquipmentInfo.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/EquipmentInfo.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+                </li>
+
+                <li>
+
+                    <b>Explanation</b>
+                    <p>
+                        Without reviews of the car , user will always be unsure about buying a car.This tab will give information of the reviews of the car.
+                    </p>
+                    <b>    Access to the page:</b> <br />
+                    <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/FinalProject/CarReview.aspx">   <img src="images/carreview.png" width="200" height="70" /> <br /> </a>
+                    <b>  User Input:</b><br />
+                    <img src="images/carreview1.png">
+                    <p>
+                        User should select the prepopulated drop downs from data base (i.e. car name, year and car model) to get car reviews.
+                    </p>
+                    <b>
+                        Sample Output:
+                    </b><br />
+                    <img src="images/carreview2.png"> <br />
+                    <b>
+                        Output:
+                    </b><br />
+                    <img src="images/carreview3.png">
+                    <p>See this Experiment for more technical information - > 
+                        <a href="http://net4.ccs.neu.edu/home/snehav27/experiments/ProjectRelated/CarRatings.aspx"> CLICK HERE</a></p>
+
+                    <br />
+                    <b>Source Code </b> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/PriceInfo.aspx" target="_blank"> ASPX </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/PriceInfo.aspx.cs" target="_blank"> Code Behind </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfo.cs" target="_blank"> Class to Store Values to pass to DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/app_code/dao/CarInfoDAO.cs" target="_blank"> DAO </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/js/carinfo.js" target="_blank"> Java Script </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/carInfo.css" target="_blank"> Style Sheet of the page </a> <br />
+                    <a href="../../fileview/Default.aspx?~/experiments/FinalProject/css/table.css" target="_blank"> Style Sheet of the table </a> <br />
+
+
+                </li>
+            </ul>
+        </div>
+
+
+        <center>
+            <div id="footer"> 2014 Copyright © Sneha Vankireddy</div>
+        </center>
+    </div>
+</body>
+</html>

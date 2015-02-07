@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Display test</title>
+    <style>
+        /* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* Zebra striping */
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+
+        th {
+            background: #333;
+            color: white;
+            font-weight: bold;
+        }
+
+        td, th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+                /* Hide table headers (but not display: none;, for accessibility) */
+                thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+            tr {
+                border: 1px solid #ccc;
+            }
+
+            td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+
+                td:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+
+                /*
+	Label the data
+	*/
+                td:nth-of-type(1):before {
+                    content: "First Name";
+                }
+
+                td:nth-of-type(2):before {
+                    content: "Last Name";
+                }
+
+                td:nth-of-type(3):before {
+                    content: "Job Title";
+                }
+
+                td:nth-of-type(4):before {
+                    content: "Favorite Color";
+                }
+
+                td:nth-of-type(5):before {
+                    content: "Dream Vacation City";
+                }
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+    </style>
+</head>
+<body class="main-wrapper" id="centered">
+    <div>
+        <h1>Experiment 4 :  </h1>
+        <h2>Responsive Table :</h2>
+      </div>
+    <table >
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Job Title</th>
+                <th>Favorite Color</th>
+                <th>Dream Vacation City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sneha</td>
+                <td>Vankireddy</td>
+                <td>Software Engineer</td>
+                <td>Pink</td>
+                <td>Paris</td>
+            </tr>
+            <tr>
+                <td>Indrani</td>
+                <td>Rentala</td>
+                <td>Testing Engineer</td>
+                <td>Blue</td>
+                <td>Tokyo</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>About Experiment</h4>
+    <p>
+        This Experiment is continuation of the experiments of <a href="http://net4.ccs.neu.edu/home/snehav27/story/index.htm?../experiments/responsiveweb/story.txt">Responsive experiments :</a> <br />
+        Tables are part of every website but the are designed in such a way they cannot be modified with width or height , Even if we do it may turn ugly which no user or client would love to see.
+         We can follow different approch  which is possible through CSS.Current table view model can removed  and data in the table can be interpreted as sheet of information as shown in the experiment.
+    </p>
+    <h4> View Code :</h4>
+    <pre>
+    &lt;table&gt;
+            &lt;thead&gt; <br />
+            &lt;tr&gt;<br />
+            &lt;th&gt;First Name&lt;/th&gt;<br />
+            &lt;th&gt;Last Name&lt;/th&gt;<br />
+            &lt;th&gt;Job Title&lt;/th&gt;<br />
+            &lt;th&gt;Favorite Color&lt;/th&gt;<br />
+            &lt;th&gt;Dream Vacation City&lt;/th&gt;<br />
+            &lt;/tr&gt;<br />
+        &lt;/thead&gt;<br />
+    &lt;tbody&gt;<br />
+             &lt;tr&gt;<br />
+             &lt;td&gt;Sneha&lt;/td&gt;<br />
+             &lt;td&gt;Vankireddy&lt;/td&gt;<br />
+            &lt;td&gt;Software Engineer&lt;/td&gt;<br />
+            &lt;td&gt;Pink&lt;/td&gt;<br />
+             &lt;td&gt;Paris&lt;/td&gt;<br />
+            &lt;/tr&gt;<br />
+           &lt;/table&gt;<br />
+</pre>
+    <b>Description :</b>
+    <p> This table view is same as any normal table , but the trick is done in the CSS file to convert the details in the table as sheet of information</p>
+    <h4> CSS code snippet : </h4>
+    <pre> 
+         @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {<br />
+          
+            table, thead, tbody, th, td, tr {<br />
+                display: block;<br />
+            }<br />
+             
+                thead tr {<br />
+                    position: absolute;<br />
+                    top: -9999px;<br />
+                    left: -9999px;<br />
+                }
+            tr {
+                border: 1px solid #ccc;<br />
+            }
+            td {               
+                border: none;<br />
+                border-bottom: 1px solid #eee;<br />
+                position: relative;<br />
+                padding-left: 50%;<br />
+            }
+                td:before {<br />  
+                    position: absolute;<br />                
+                    top: 6px;<br />
+                    left: 6px;<br />
+                    width: 45%;<br />
+                    padding-right: 10px;<br />
+                    white-space: nowrap;<br />
+                }<br />
+                 td:nth-of-type(1):before {<br />
+                    content: "First Name";<br />
+                }<br />
+                td:nth-of-type(2):before {<br />
+                    content: "Last Name";<br />
+                }<br />
+                td:nth-of-type(3):before {<br />
+                    content: "Job Title";<br />
+                }
+                td:nth-of-type(4):before {<br />
+                    content: "Favorite Color";<br />
+                }<br />
+                td:nth-of-type(5):before {<br />
+                    content: "Dream Vacation City";<br />
+                }<br />
+        }</pre>
+    <b> Description :</b>
+    <p> As we know from my previour experiments CSS @media queries is to detect if the screen is smaller than the maximum squishitude of our table. If it is, we're going to reformat the table. 
+     In the CSS file we are forcing the table to not behave like table any more and blocking it also hidding headers ,  every table-related element to be block-level. 
+    Here we are making table row to become table itself and making the table coloumn act as table row. which will alter the view when data is viewed in the 
+    small screen. Also we need to mention before elements of td element which will be staring from 0,1 ,2 ... element when data changes  .</p>
+    <h4>Source Code :</h4>
+    <a href="../../fileview/Default.aspx?~/experiments/responsiveweb/ResponsiveTable.html" target="_blank">View Source</a>
+    <hr />
+
+    <h4>References :</h4>
+    <a href="http://css-tricks.com/" target="_blank">CSS Tricks</a> <br />
+    <a href="http://elvery.net/">Elvery</a>
+
+    <hr />
+</body>
+</html>

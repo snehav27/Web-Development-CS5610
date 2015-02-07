@@ -1,0 +1,261 @@
+﻿<%@ Page Language="C#" %>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.6.js'></script>
+<script type='text/javascript'>
+  
+$(function() {
+
+    $('#btnTest').click(function() {        
+        fadeSwitchElements('x', 'a','c');    
+    }); 
+    
+    function fadeSwitchElements(id1, id2,id3)
+    {
+        var element1 = $('#' + id1);
+        var element2 = $('#' + id2);
+     
+
+        if(element1.is(':visible'))
+        {
+            element1.fadeToggle(500);
+            element2.fadeToggle(500);
+       
+        }
+        else
+        {
+             element2.fadeToggle(500, function() {
+                element1.fadeToggle(500);
+             });
+
+        }    
+    }
+
+});
+
+
+</script>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset='utf-8' />
+
+<title>Sneha Cafe</title>
+
+<style type="text/css">
+    body {
+        background: #DBDBDD;
+
+}
+    ul.master_navigation
+    {
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        list-style: none;
+        margin: 0.5em 0;
+        padding: 0;
+     /*background: #FF0066*/   
+    }
+
+    ul.master_navigation li
+    {
+        display: inline-block;
+        padding: 0 0.5%;
+    }
+
+    a
+    {
+        color: #08f;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    a:visited
+    {
+        color: #88f;
+    }
+
+    a:hover
+    {
+        color: #88f;
+    }
+
+    p
+    {
+        text-align: justify;
+    }
+    #centered {
+        width: 800px;
+        text-align:left;
+        border:0px;
+        padding : 0;
+        margin :0 auto;
+    }
+     .thumbnail1 {
+            position: absolute;
+            top: 40%;
+            left: 52%;
+            width: 320px;
+            height: 240px;
+            -webkit-transform: translate(-50%,-50%); /* Safari and Chrome */
+            -moz-transform: translate(-50%,-50%); /* Firefox */
+            -ms-transform: translate(-50%,-50%); /* IE 9 */
+            -o-transform: translate(-50%,-50%); /* Opera */
+            transform: translate(-50%,-50%);
+        }
+        .thumbnail2 {
+            position: absolute;
+            top: 40%;
+            left: 60%;
+            width: 320px;
+            height: 240px;
+            -webkit-transform: translate(-50%,-50%); /* Safari and Chrome */
+            -moz-transform: translate(-50%,-50%); /* Firefox */
+            -ms-transform: translate(-50%,-50%); /* IE 9 */
+            -o-transform: translate(-50%,-50%); /* Opera */
+            transform: translate(-50%,-50%);
+        }
+        .thumbnail {
+            position: absolute;
+            top: 40%;
+            left: 68%;
+            width: 320px;
+            height: 240px;
+            -webkit-transform: translate(-50%,-50%); /* Safari and Chrome */
+            -moz-transform: translate(-50%,-50%); /* Firefox */
+            -ms-transform: translate(-50%,-50%); /* IE 9 */
+            -o-transform: translate(-50%,-50%); /* Opera */
+            transform: translate(-50%,-50%);
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+        }
+
+            .image img {
+                -webkit-transition: all 1s ease; /* Safari and Chrome */
+                -moz-transition: all 1s ease; /* Firefox */
+                -o-transition: all 1s ease; /* IE 9 */
+                -ms-transition: all 1s ease; /* Opera */
+                transition: all 1s ease;
+            }
+
+            .image:hover img {
+                -webkit-transform: scale(1.25); /* Safari and Chrome */
+                -moz-transform: scale(1.25); /* Firefox */
+                -ms-transform: scale(1.25); /* IE 9 */
+                -o-transform: scale(1.25); /* Opera */
+                transform: scale(1.25);
+            }
+</style>
+
+<style type="text/css" media="screen">
+    body {
+        width:900px;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .pad {
+        padding: 10px;
+    }
+    .onTopOfEachOther {
+    position: relative;
+        top: 1px;
+        left: -3px;
+    }
+.onTopOfEachOther span {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+</style>
+
+
+
+</head>
+
+<body class="main-wrapper" id="centered">
+
+<div class="pad"  >
+
+<form id="form1" runat="server">
+
+<div>
+
+<ul class="master_navigation">
+    <li><a href="sitestatistics/" target="_blank">SiteStatistics</a></li>
+    <li><a href="statistics/" target="_blank">Statistics</a></li>
+    <li><a href="source/" target="_blank">Source</a></li>
+    <li><a href="search/" target="_blank">Search</a></li>
+    <li><a href="searchtree/" target="_blank">SearchTree</a></li>
+    <li><a href="textview/" target="_blank">TextView</a></li>
+    <li><a href="filelist.aspx" target="_blank">FileList</a></li>
+    <li><a href="autofile.aspx" target="_blank">AutoFile</a></li>
+    <li><a href="images/autoimage.aspx" target="_blank">Images</a></li>
+    <li><a href="blog/" target="_blank">Blog</a></li>
+</ul>
+
+<hr />
+
+    
+    <img src="images/webImages/mypic.png" alt="Sneha Vankireddy"> 
+         
+     <div class="thumbnail1">
+        <div class="image">
+  <a href="story/index.htm?../experiments/story.txt">
+  <img src="images/webImages/experiments.png" id="btnTest" alt="Experiments" >
+  </a>
+</div>
+         </div>
+     <div class="thumbnail2">
+        <div class="image">
+  <img src="images/webImages/sql-database.png"  alt="HTML tutorial" >
+            </div>
+         </div>
+     <div class="thumbnail">
+        <div class="image">
+  <img src="images/webImages/final-projects.png" alt="HTML tutorial" >
+            </div>
+         </div>
+     <h1>Sneha Vankireddy</h1>
+    <div class="onTopOfEachOther">
+   
+     <h2> Hello,</h2>
+     <h3>a bit about me:</h3>
+<p >
+        
+  
+    I am from Tirupati India, candidate for a Master Of Science in
+     Computer Science at Northeastern University Boston. This website is being developed
+     as a part of the course "CS-5610 : Web Development" instructed by Prof <a href="http://www.northeastern.edu/rasala"
+        target="_blank">Richard Rasala..</a>  Prior coming to Northeastern University, 
+      I was Software Engineer at CSC serving chrysler client.
+     Eager to understand more on Web Development technologies (HTML5, CCS3,angular js, Ajax,jQuery, WebServices, JSON, AJAX)
+</p>
+        
+
+         
+        <p id='a' style="display: none;">
+Here is a link to :
+<a href="story/index.htm?../experiments/story.txt" target="_blank">Experiments</a>
+</p>
+        <p id='b' style="display: none;">Yet to Start This Module</p>
+        <p id='c' style="display: none;">Yet to Start This Module</p>
+    </div>
+    
+</div>
+
+</form>
+<div>
+</div>
+</div>
+
+</body>
+</html>

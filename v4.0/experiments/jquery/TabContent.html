@@ -1,0 +1,304 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 600px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }
+
+
+        .headRow {
+            display: table-header-group;
+            width: auto;
+        }
+
+
+        .divTable {
+            display: table;
+            width: auto;
+            background-color: #eee;
+            border: 1px solid #666666;
+            border-spacing: 5px;
+        }
+
+        .divRow {
+            display: table-row;
+            width: auto;
+        }
+
+        .divCell {
+            float: left; /*fix for  buggy browsers*/
+            display: table-column;
+            width: 200px;
+            background-color: #ccc;
+        }
+        /*----- Tabs -----*/
+        .tabs {
+            width: 100%;
+            display: inline-block;
+        }
+
+        /*----- Tab Links -----*/
+        /* Clearfix */
+        .tab-links:after {
+            display: block;
+            clear: both;
+            content: '';
+        }
+
+        .tab-links li {
+            margin: 0px 5px;
+            float: left;
+            list-style: none;
+        }
+
+        .tab-links a {
+            padding: 9px 15px;
+            display: inline-block;
+            border-radius: 3px 3px 0px 0px;
+            background: #7FB5DA;
+            font-size: 16px;
+            font-weight: 600;
+            color: #4c4c4c;
+            transition: all linear 0.15s;
+        }
+
+            .tab-links a:hover {
+                background: #a7cce5;
+                text-decoration: none;
+            }
+
+        li.active a, li.active a:hover {
+            background: #fff;
+            color: #4c4c4c;
+        }
+
+        /*----- Content of Tabs -----*/
+        .tab-content {
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: -1px 1px 1px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+
+        .tab {
+            display: none;
+        }
+
+            .tab.active {
+                display: block;
+            }
+
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.tabs .tab-links a').on('click', function (e) {
+                var currentAttrValue = jQuery(this).attr('href');
+
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();
+
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                e.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body ng-app="" class="main-wrapper" id="centered">
+    <h1> Experiment 1</h1>
+    <h2> HTML Tabs using Jquery</h2>
+    <div class="tabs">
+        <ul class="tab-links">
+            <li class="active"><a href="#tab1">Tab #1</a></li>
+            <li><a href="#tab2">Tab #2</a></li>
+            <li><a href="#tab3">Tab #3</a></li>
+
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab active">
+                <p>Tab #1 content goes here!</p>
+                <p>Tab1 paragraph content.</p>
+            </div>
+
+            <div id="tab2" class="tab">
+                <p>Tab #2 content goes here!</p>
+                <p>Tab2 paragraph content</p>
+            </div>
+
+            <div id="tab3" class="tab">
+                <p>Tab #3 content goes here!</p>
+                <p>Tab3 paragraph content.</p>
+            </div>
+
+            
+        </div>
+
+        <h2> About the experiment :</h2>
+        <p>Tabs are a very nice way of grouping lots of content into a very small space. Instead using many html page for showing less content in each page we can use tabs.
+        .Tabs can be defined in the same page .This also easy for users. In this experiment I have used Jquery and normal html content to change content according to the tab selected.</p>
+        <h2>View Code </h2>
+        <pre>&lt;div class="tabs"&gt;<br />
+        &lt;ul class="tab-links"&gt;<br />
+            &lt;li class="active"&gt;&lt;a href="#tab1"&gt;Tab #1&lt;/a&gt;&lt;/li&gt;<br />
+            &lt;li&gt;&lt;a href="#tab2"&gt;Tab #2&lt;/a&gt;&lt;/li&gt;<br />
+        &lt;/ul&gt;<br />
+        &lt;div class="tab-content"&gt;<br />
+            &lt;div id="tab1" class="tab active"&gt;<br />
+                &lt;p&gt;Tab #1 content goes here!&lt;/p&gt;<br />
+                &lt;p&gt;Tab1 paragraph content.&lt;/p&gt;<br />
+            &lt;/div&gt;<br />
+            &lt;div id="tab2" class="tab"&gt;<br />
+                &lt;p&gt;Tab #2 content goes here!&lt;/p&gt;<br />
+                &lt;p&gt;Tab2 paragraph content&lt;/p&gt;<br />
+            &lt;/div&gt; <br /> </pre>
+        <b> Description :</b>
+        <p> Here I have used the only two tabs for explaining code.Starting off there’s a div with class="tabs". Inside there’s an un-ordered list, (or an ordered one if you like, it makes no difference to this tutorial), 
+        with class="tab-links". Inside the list items there are anchor links. 
+        The first list item is marked as class="active". This indicates where to start the tabs. There’s a div with class="tab-content". Inside that we have 2 divs, each with class="tab", (this number corresponds to how many tab links there are).
+         The currently visible tab will also need an active class, e.g. class="tab active".</p>
+        <h2> Jquery Code:</h2>
+        <pre>
+                 jQuery(document).ready(function () { <br />
+                          jQuery('.tabs .tab-links a').on('click', function (e) {<br />
+                          var currentAttrValue = jQuery(this).attr('href');<br />                
+                          jQuery('.tabs ' + currentAttrValue).fadeIn(400).siblings().hide();<br />                
+                         jQuery(this).parent('li').addClass('active').siblings().removeClass('active');<br />
+                          e.preventDefault();<br />
+            });<br />
+        });<br />
+
+        </pre>
+        <b> Description :</b><br />
+        View contents are modified and perform action according to the code available from jquery method. <br />
+        To check if the user has clicked on a tab, to do that we simply reference every link that happens to be a tab link with .tab-links a.<br />
+        Then created a variable called currentAttrValue, (current attribute value), which grabs the href="" of the clicked anchor link.<br />
+       Users would not like to have the plain change of the tab content so in this experiment used the fade animation to give nice look.
+        .fadeIn(400).siblings().hide() -> will make tab to animate and siblings of tab, and hide them.<br />
+        .siblings().removeClass('active') ->Show the element with the referenced #id, such as #tab2, then find the other tabs, 
+        which are siblings of #tab2, and hide them <br />
+        Lastly we find all siblings of that parent list item and remove, if any, classes of .active by using
+         <br />
+
+        <h2>Source Code</h2>
+        <a href="../../fileview/Default.aspx?~/experiments/jquery/TabContent.html" target="_blank">View Source</a>
+        <hr />
+
+        <h2>References</h2>
+        <a href="http://inspirationalpixels.com/" target="_blank">InspirationalPixels</a> </br>
+        <hr />
+
+        </br>
+        </br>
+    </div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EBAY API With Angular JS</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+       <style type="text/css" >
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        .demo {
+            border: 2px solid #a1a1a1;
+            padding: 10px 40px;
+            background: #dddddd;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+        }
+
+        h2 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 1.1em;
+            padding: 0.5em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        h4 {
+            background-color: lightpink;
+            color: #808080;
+            font-size: 0.9em;
+            padding: 0.3em;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        ul.master_navigation {
+            font-size: 100%;
+            font-weight: bold;
+            text-align: center;
+            padding: 0;
+            list-style: none;
+            margin: 0.5em 0;
+            /*background: #FF0066*/
+        }
+
+            ul.master_navigation li {
+                display: inline-block;
+                padding: 0 0.5%;
+            }
+
+        a {
+            color: #08f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            a:visited {
+                color: #88f;
+            }
+
+            a:hover {
+                color: #88f;
+            }
+
+        p {
+            text-align: justify;
+        }
+
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            width: 900px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #DBDBDD;
+        }
+
+        .pad {
+            padding: 10px;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+
+        pre {
+            font-size: 0.77em;
+            line-height: 0.8em;
+            font-family: Courier, "Courier New", mono;
+            color: #000000;
+            margin: 4px;
+            padding: 4px;
+            border: solid 1px #808080;
+            background: #c3dff8;
+        }                
+table, td, th {
+    border: 1px solid black;
+}
+
+th {
+    background-color: pink;
+    color: grey;
+}
+    </style >
+</head>
+<body id="centered" ng-app >
+    <div class="container" ng-controller="EbayClientController" class="main-wrapper" >
+        <h1>Ebay API using AngularJS </h1>
+        <p>
+            <b> Note : </b> Enable CORS in your Google Chrome browser (You can add plugin to chrome browser) , I am still working on how to enable CORS through code.
+            There is an issue in AngularJS</b>
+        </p>
+        <div class="demo">
+            <input ng-model="keyWord" class="form-control" placeholder="Item Name" />
+            <input type="number" ng-model="noOfItemsPerPage" class="form-control" placeholder="Number Of Items" />
+            <button ng-click="getDetails()" class="btn btn-primary btn-block">Get EBAY DETAILS</button> </br>
+        </div>
+        </br> </br>
+        <table class="table" id="tab1" style="display:none">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Condition</th>
+                    <th>Current Price In $</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in item">
+                    <td>{{i.title[0]}}</td>
+                    <td>{{i.location[0]}} - {{i.country[0]}}</td>
+                    <td>
+                        <span ng-repeat="c in i.condition">
+
+                            {{c.conditionDisplayName[0]}}
+
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-repeat="s in i.sellingStatus">
+                            <span ng-repeat="p in s.currentPrice">
+                                {{p.__value__}}&nbsp;
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <img ng-src="{{i.galleryURL[0]}}" />
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>About the Experiment</h4>
+        <p>
+            Application programming interface is API , Using API two programs can talk to each other . Send information , recive information from different programs.
+            In this experiment I have used EBay API to talk and receive the information from application. I have used Angular JS and Ebay API to fetch data entered and
+            show details on the screen . Responce object from API is received in JSON format.
+
+        </p>
+        <h4> Code snippet in the script</h4>
+        <pre></br>
+                          $http.get(url).success(function (response) { </br>
+                          $scope.item = response.findItemsByKeywordsResponse[0].searchResult[0].item;      </br>                                                      
+                          }); </br>
+     </pre>
+        <p>
+            <b>Description</b></br>
+            After URL sends the request to Ebay client , response is received and results is fetched in JSON format.
+            $scope.item has required data to display item information on the screen.
+
+        </p>
+        <h4> Code snippet in the Div:</h4>
+        <pre>
+                           &lt tr ng-repeat="i in item"&gt
+       </pre>
+        <p>
+            <b>Description:</b>
+            Since Item has information , ng-repeat can be used to iterate and fetch data of search result.
+        </p>
+
+        <h4>Source Code </h4>
+        <a href="../../fileview/Default.aspx?~/experiments/api/EbayAngular.html" target="_blank">View Source</a>
+
+        <hr />
+
+        <h4>References</h4>
+        <a href="https://go.developer.ebay.com/" target="_blank">eBay Developer Program</a>
+        <hr />
+    </div>
+
+    <script>
+
+        var URL = "http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=Northeas-ed86-404b-906d-3c5d34eb2a1b&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=keyWord&paginationInput.entriesPerPage=noOfItemsPerPage";
+        var headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+
+        function EbayClientController($scope, $http) {
+
+            $http.headers = headers;
+            $scope.getDetails = function () {
+                var keyWord = $scope.keyWord;
+                var noOfItemsPerPage = $scope.noOfItemsPerPage;
+                console.log(URL);
+                var url = URL.replace("keyWord", keyWord);
+                url = url.replace("noOfItemsPerPage", noOfItemsPerPage);
+                $http.get(url).success(function (response) {
+                    $scope.item = response.findItemsByKeywordsResponse[0].searchResult[0].item;
+                    document.getElementById("tab1").style.display = "";
+                });
+            }
+        }
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

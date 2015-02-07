@@ -1,0 +1,9 @@
+﻿../../story/whatisnext.htm?../experiments/ProjectRelated2/story.txt		       What is Next?
+AddingIFrame.aspx														Adding IFrame to Html
+CreateandDragJS.html													Create and drag and delete HTML Contents
+FetchingFromMongoDB.html                                                Fetching From MongoDB using angular JS
+Marque.html                                                             Marque , Stop and Start on mouse over.
+Gogreenmil.aspx														    Fetch from DB using Five Tables using Mileage Information 
+GogreenScore.aspx													    Fetch from DB using Five Tables using Score Information 
+NewsDeletePage.html														News Delete Page for Admin
+

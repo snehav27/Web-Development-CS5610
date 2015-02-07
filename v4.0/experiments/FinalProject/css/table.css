@@ -1,0 +1,237 @@
+ table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* Zebra striping */
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+
+        th {
+            background: #333;
+            color: white;
+            font-weight: bold;
+        }
+
+        td, th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+                /* Hide table headers (but not display: none;, for accessibility) */
+                thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+            tr {
+                border: 1px solid #ccc;
+            }
+
+           
+
+                /*
+	Label the data
+	*/
+               
+
+
+      td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+
+                td:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+
+                /*
+	Label the data
+	*/
+             #tab1  td:nth-of-type(1):before {
+                    content: "Model Name";
+                }
+
+    #tab1 td:nth-of-type(2):before {
+                    content: "Model Series";
+                }     
+   #tab2  td:nth-of-type(1):before {
+                    content: "Caption : ";
+                }
+
+    #tab2 td:nth-of-type(2):before {
+                    content: "Image : ";
+                }
+
+     #tab3  td:nth-of-type(1):before {
+                    content: "Company Name : ";
+                }
+
+    #tab3 td:nth-of-type(2):before {
+                    content: "Address : ";
+                }
+     #tab3 td:nth-of-type(3):before {
+                    content: "Map Info : ";
+                }
+      #tab3 td:nth-of-type(4):before {
+                    content: "Website : ";
+                }
+       #tab3 td:nth-of-type(5):before {
+                    content: "Phone Number : ";
+                }
+       #tab3 td:nth-of-type(6):before {
+                    content: "Open @ : ";
+                }
+
+#tab3 td:nth-of-type(7):before {
+                    content: "Rating : ";
+                }
+#tab4 td:nth-of-type(1):before {
+                    content: "Price : ";
+                }
+#tab5 td:nth-of-type(1):before {
+                    content: "Name : ";
+                }
+#tab5 td:nth-of-type(2):before {
+                    content: "Equipment Type : ";
+                }
+#tab5 td:nth-of-type(3):before {
+                    content: "Availability : ";
+                }
+#tab5 td:nth-of-type(4):before {
+                    content: "Information : ";
+                }
+#DetailsGridView td:nth-of-type(1):before {
+                    content: "Model : ";
+                }
+#DetailsGridView td:nth-of-type(2):before {
+                    content: "Cyl : ";
+                }
+#DetailsGridView td:nth-of-type(3):before {
+                    content: "VehClass : ";
+                }
+#DetailsGridView td:nth-of-type(4):before {
+                    content: "AirPollutionScore : ";
+                }
+#DetailsGridView td:nth-of-type(5):before {
+                    content: "CityMPG : ";
+                }
+#DetailsGridView td:nth-of-type(6):before {
+                    content: "HwyMPG : ";
+                }
+#DetailsGridView td:nth-of-type(7):before {
+                    content: "CmbMPG : ";
+                }
+#DetailsGridView td:nth-of-type(8):before {
+                    content: "GreenHouseScore : ";
+                }
+
+#GridView2 td:nth-of-type(1):before {
+                    content: "Year : ";
+                }
+#GridView2 td:nth-of-type(2):before {
+                    content: "Model : ";
+                }
+#GridView2 td:nth-of-type(3):before {
+                    content: "Cyl : ";
+                }
+#GridView2 td:nth-of-type(4):before {
+                    content: "trans : ";
+                }
+#GridView2 td:nth-of-type(5):before {
+                    content: "drive : ";
+                }
+#GridView2 td:nth-of-type(6):before {
+                    content: "fuel : ";
+                }
+#GridView2 td:nth-of-type(7):before {
+                    content: "stnddescription : ";
+                }
+#GridView2 td:nth-of-type(8):before {
+                    content: "VehClass : ";
+                }
+#GridView2 td:nth-of-type(9):before {
+                    content: "AirPollutionScore : ";
+                }
+#GridView2 td:nth-of-type(10):before {
+                    content: "CityMPG : ";
+                }
+#GridView2 td:nth-of-type(11):before {
+                    content: "HwyMPG : ";
+                }
+#GridView2 td:nth-of-type(12):before {
+                    content: "CmbMPG : ";
+                }
+#GridView2 td:nth-of-type(13):before {
+                    content: "GreenHouseScore : ";
+                } 
+
+
+
+#GridView3 td:nth-of-type(1):before {
+                    content: "Year : ";
+                }
+#GridView3 td:nth-of-type(2):before {
+                    content: "Model : ";
+                }
+#GridView3 td:nth-of-type(3):before {
+                    content: "Cyl : ";
+                }
+#GridView3 td:nth-of-type(4):before {
+                    content: "trans : ";
+                }
+#GridView3 td:nth-of-type(5):before {
+                    content: "drive : ";
+                }
+#GridView3 td:nth-of-type(6):before {
+                    content: "fuel : ";
+                }
+#GridView3 td:nth-of-type(7):before {
+                    content: "stnddescription : ";
+                }
+#GridView3 td:nth-of-type(8):before {
+                    content: "VehClass : ";
+                }
+#GridView3 td:nth-of-type(9):before {
+                    content: "AirPollutionScore : ";
+                }
+#GridView3 td:nth-of-type(10):before {
+                    content: "CityMPG : ";
+                }
+#GridView3 td:nth-of-type(11):before {
+                    content: "HwyMPG : ";
+                }
+#GridView3 td:nth-of-type(12):before {
+                    content: "CmbMPG : ";
+                }
+#GridView3 td:nth-of-type(13):before {
+                    content: "GreenHouseScore : ";
+                }
+        #centered {
+            width: 800px;
+            text-align: left;
+            border: 0px;
+            padding: 0;
+            margin: 0 auto;
+        }
+        }
+
+

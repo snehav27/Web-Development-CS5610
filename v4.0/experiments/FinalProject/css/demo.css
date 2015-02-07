@@ -1,0 +1,359 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+body {
+	background: #336ca6;
+	color: #333;
+	font-weight: 300;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+	outline: none;
+
+}
+
+a:hover, a:focus {
+	color: #336ca6;
+	outline: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+
+
+/* Demo Buttons Style */
+.codrops-demos {
+	padding-top: 1em;
+	font-size: 1.1em;
+}
+
+.codrops-demos a {
+	display: block;
+	float: left;
+	clear: both;
+	margin: 0.5em 0.5em 0.5em 1.9em;
+	padding: 1em 1.1em;
+	width: 280px;
+	outline: none;
+	color: #fff;
+	background: #336ca6;
+	text-align: center;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.codrops-demos a:hover,
+.codrops-demos a.current-demo,
+.codrops-demos a.current-demo:hover {
+	opacity: 0.6;
+}
+
+.content {
+	padding: 4em 2em;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.block {
+	float: left;
+	padding: 1em 3em;
+}
+
+.block-40 {
+	width: 40%;
+}
+
+.block-60 {
+	width: 60%;
+}
+
+.block p {
+	margin: 0;
+	padding: 0 1em 0.6em;
+	font-size: 1.8em;
+	line-height: 1.5;
+}
+
+.info {
+	text-align: center;
+	font-size: 1.5em;
+	margin-top: 3em;
+	clear: both;
+	padding-top: 3em;
+	color: rgba(255,255,255,0.5);
+}
+
+.info a {
+	font-weight: 700;
+	font-size: 0.9em;
+}
+
+.info a:hover {
+	color: #336ca6;
+}
+inputs:-webkit-input-placeholder {
+        color: #b5b5b5;
+    }
+
+    inputs-moz-placeholder {
+        color: #b5b5b5;
+    }
+
+    .inputs {
+        width: 270px;
+        padding: 15px 25px;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        color: #9D9E9E;
+        text-shadow: 1px 1px 0 rgba(256, 256, 256, 1.0);
+        background: #FFF;
+        border: 1px solid #FFF;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+        -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+        -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.50);
+    }
+
+        .inputs:focus {
+            background: #DFE9EC;
+            color: #414848;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+            -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
+            outline: 0;
+        }
+
+        .inputs:hover {
+            background: #DFE9EC;
+            color: #414848;
+        }
+        .btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 10px 30px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+    border : dashed ;
+   
+}
+@media screen and (max-width: 69em) {
+	.block {
+		float: none;
+		width: 100% !important;
+		padding: 1em;
+	}
+}
+
+@media screen and (max-width: 25em) {
+
+	body {
+		font-size: 80%;
+	}
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}
+.error {
+    color:red;
+}
+.success {
+    color:green;
+}
+#imagcaption{
+    text-align:center;
+    margin:50px auto; 
+}
+#imagcaption a{
+    margin:0px 20px;
+    display:inline-block;
+    text-decoration:none;
+    color:black;
+ }
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    
+}
+ #content
+{
+	float: left;
+	width: 56%;
+	padding: 20px 0;
+	margin: 0 0 0 2%;
+    border:solid;
+}
+#right {
+
+    position:absolute ;
+    right:5px ;   
+}
+    .divtablepadding{
+        
+padding-left:80px;
+padding-right:80px;
+
+    }
+ .responstable {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: #FFF;
+  color: #024457;
+  border-radius: 10px;
+  border: 1px solid #167F92;
+ 
+}
+.responstable tr {
+  border: 1px solid #D9E4E6;
+}
+.responstable tr:nth-child(odd) {
+  background-color: #c0d9fc;
+}
+.responstable th {
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #336ca6;
+  color: #FFF;
+  padding: 1em;
+}
+.responstable th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.responstable th:nth-child(2) {
+  display: table-cell;
+}
+.responstable th:nth-child(2) span {
+  display: none;
+}
+.responstable th:nth-child(2):after {
+  content: attr(data-th);
+}
+@media (min-width: 480px) {
+  .responstable th:nth-child(2) span {
+    display: block;
+  }
+  .responstable th:nth-child(2):after {
+    display: none;
+  }
+}
+.responstable td {
+  display: block;
+  word-wrap: break-word;
+  max-width: 7em;
+}
+.responstable td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+@media (min-width: 480px) {
+  .responstable td {
+    border: 1px solid #D9E4E6;
+  }
+}
+.responstable th, .responstable td {
+  text-align: left;
+  margin: .5em 1em;
+}
+@media (min-width: 480px) {
+  .responstable th, .responstable td {
+    display: table-cell;
+    padding: 1em;
+  }
+}
+
+
+table{
+    border-collapse:collapse;
+    border-spacing:0}
+td,th
+{
+    padding:0
+}
+
+.btn1 {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Button 6 */
+.btn-6 {
+	color: #fff;
+	background: #226fbe;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+
+.btn-6:active {
+	top: 2px;
+}
+
+
+/* Button 6k */
+.btn-6k {
+	border: 4px double #226fbe;
+	border-radius: 15px;
+}
+
+.btn-6k:hover {
+	background: transparent;
+	color: #226fbe;
+}
+table#t01 {
+    width: 100%;    
+    background-color: #c0d9fc;
+   border: 1px solid #000;
+}
